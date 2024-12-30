@@ -1,0 +1,3 @@
+[submodule "watchface-tools"]
+	path = watchface-tools
+	url = git@github.com:google/watchface.git
