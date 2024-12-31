@@ -17,6 +17,24 @@ android {
         versionName = libs.versions.versionName.get()
     }
 
+    productFlavors {
+        flavorDimensions.add("version")
+        create("wear4") {
+            dimension = "version"
+            manifestPlaceholders["wffVersion"] = "1"
+            minSdk = 33
+            versionCode = versionCode?.inc()
+            versionName = "${libs.versions.versionName.get()}-4"
+        }
+        create("wear5") {
+            dimension = "version"
+            manifestPlaceholders["wffVersion"] = "2"
+            minSdk = 34
+            versionCode = versionCode?.inc()
+            versionName = "${libs.versions.versionName.get()}-5"
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -35,8 +53,11 @@ tasks.register("validateWffXml") {
     val jarFile = file(
         "$relativeDir/specification/validator/build/libs/dwf-format-2-validator-1.0.jar"
     )
-    val inputFile = file("src/main/res/raw/watchface.xml")
-    val validatorArgs = listOf("2", inputFile)
+
+    val fileToWffVersion = mapOf (
+        1 to file("src/wear4/res/raw/watchface.xml"),
+        2 to file("src/wear5/res/raw/watchface.xml")
+    )
 
     doLast {
         // Validate that the relative directory exists
@@ -67,21 +88,25 @@ tasks.register("validateWffXml") {
         }
 
         // Validate that the input file exists
-        if (!inputFile.exists()) {
-            throw GradleException("Input file not found at ${inputFile.absolutePath}")
-        }
-
-        // Run the resulting JAR file
-        try {
-            println("Running JAR file $jarFile with arguments: $validatorArgs")
-            exec {
-                commandLine(
-                    "java", "-jar", jarFile.absolutePath, *validatorArgs.toTypedArray()
-                )
+        fileToWffVersion.forEach {
+            if (!it.value.exists()) {
+                throw GradleException("Input file not found at ${it.value.absolutePath}")
             }
-        } catch (e: ExecException) {
-            throw GradleException("The JAR execution failed: ${e.message}. " +
-                    "Check the JAR's output for more details.")
+
+            val validatorArgs = listOf(it.key, it.value.absolutePath)
+
+            // Run the resulting JAR file
+            try {
+                println("Running JAR file $jarFile with arguments: $validatorArgs")
+                exec {
+                    commandLine(
+                        "java", "-jar", jarFile.absolutePath, *validatorArgs.toTypedArray()
+                    )
+                }
+            } catch (e: ExecException) {
+                throw GradleException("The JAR execution failed: ${e.message}. " +
+                        "Check the JAR's output for more details.")
+            }
         }
 
     }
@@ -95,14 +120,20 @@ tasks.register("validateMemoryFootprint") {
             .find { it.contains("Release", ignoreCase = true) }?.let { "release" }
         ?: "release" // Default to debug if no variant is specified
 
+    val buildFlavor = project.gradle.startParameter.taskNames
+        .find { it.contains("wear5", ignoreCase = true) }?.let { "wear5" }
+        ?: project.gradle.startParameter.taskNames
+            .find { it.contains("wear4", ignoreCase = true) }?.let { "wear4" }
+        ?: "wear5" // Default to wear 5 if no variant is specified
+
     val relativeDirPath = "../watchface-tools/play-validations"
     val buildTask = ":memory-footprint:jar"
     val jarFile = file("$relativeDirPath/memory-footprint/build/libs/memory-footprint.jar")
     val outputApkFile = file(
-        "build/outputs/apk/$buildVariant/watchface-$buildVariant.apk"
+        "build/outputs/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
     )
     val intermediatesApkFile = file(
-        "build/intermediates/apk/$buildVariant/watchface-$buildVariant.apk"
+        "build/intermediates/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
     )
     val schemaVersion = 2
     val ambientLimitMb = 10
@@ -179,14 +210,22 @@ tasks.register("optimizeWff") {
     // Release builds obfuscate resource files
     val buildVariant = "debug"
 
+    val buildFlavor = project.gradle.startParameter.taskNames
+        .find { it.contains("wear5", ignoreCase = true) }?.let { "wear5" }
+        ?: project.gradle.startParameter.taskNames
+            .find { it.contains("wear4", ignoreCase = true) }?.let { "wear4" }
+        ?: "wear5" // Default to wear 5 if no variant is specified
+
     val relativeDir = "../watchface-tools/tools"
     val buildTask = ":wff-optimizer:jar"
     val jarFile = file("$relativeDir/wff-optimizer/build/libs/wff-optimizer.jar")
 
     // Define APK file paths with appropriate string interpolation
-    val outputApkFile = file("build/outputs/apk/$buildVariant/watchface-$buildVariant.apk")
+    val outputApkFile = file(
+        "build/outputs/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
+    )
     val intermediatesApkFile = file(
-        "build/intermediates/apk/$buildVariant/watchface-$buildVariant.apk"
+        "build/intermediates/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
     )
 
     // Ensure the unzipDir path is properly constructed and cross-platform compatible
@@ -260,11 +299,10 @@ tasks.register("optimizeWff") {
         if (optimizedWffPath.exists()) {
             copy {
                 from(optimizedWffPath)
-                into("src/main/res/raw")
+                into("src/$buildFlavor/res/raw")
             }
         } else {
             throw GradleException("Optimized WFF not found at $optimizedWffPath")
         }
     }
 }
-
