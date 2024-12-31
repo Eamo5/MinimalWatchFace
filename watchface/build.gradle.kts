@@ -174,3 +174,97 @@ tasks.register("validateMemoryFootprint") {
         }
     }
 }
+
+tasks.register("optimizeWff") {
+    // Release builds obfuscate resource files
+    val buildVariant = "debug"
+
+    val relativeDir = "../watchface-tools/tools"
+    val buildTask = ":wff-optimizer:jar"
+    val jarFile = file("$relativeDir/wff-optimizer/build/libs/wff-optimizer.jar")
+
+    // Define APK file paths with appropriate string interpolation
+    val outputApkFile = file("build/outputs/apk/$buildVariant/watchface-$buildVariant.apk")
+    val intermediatesApkFile = file(
+        "build/intermediates/apk/$buildVariant/watchface-$buildVariant.apk"
+    )
+
+    // Ensure the unzipDir path is properly constructed and cross-platform compatible
+    val unzipDir = file(layout.buildDirectory.dir("intermediates/unzipped_apk"))
+    val optimizedWffPath = unzipDir.resolve("res/raw/watchface.xml")
+
+    doLast {
+        // Validate relative directory exists
+        val relativeDirFile = file(relativeDir)
+        if (!relativeDirFile.exists() || !relativeDirFile.isDirectory) {
+            throw GradleException("The specified relative directory does not exist: $relativeDir")
+        }
+
+        // Run the Gradle build task to generate the JAR file
+        exec {
+            workingDir = relativeDirFile
+            // Detect the platform-specific gradlew script
+            val gradlewScript =
+                if (System.getProperty("os.name").lowercase().contains("win")) {
+                    "gradlew.bat"
+                } else {
+                    "./gradlew"
+                }
+            commandLine(gradlewScript, buildTask)
+        }
+
+        // Validate the JAR file exists
+        if (!jarFile.exists()) {
+            throw GradleException("JAR file not found at ${jarFile.absolutePath}")
+        }
+
+        // Determine which APK to use (output or intermediates)
+        val apkFile = if (outputApkFile.exists()) {
+            outputApkFile
+        } else if (intermediatesApkFile.exists()) {
+            intermediatesApkFile
+        } else {
+            throw GradleException(
+                "APK file not found in either of the following locations: $outputApkFile," +
+                        "$intermediatesApkFile"
+            )
+        }
+
+        // Create a temp directory in intermediates for unzipping the APK
+        if (unzipDir.exists()) {
+            unzipDir.deleteRecursively()
+        }
+        unzipDir.mkdirs()
+
+        // Use Gradle to unzip APK
+        copy {
+            from(zipTree(apkFile))
+            into(unzipDir)
+        }
+
+        // Execute WFF optimizer
+        try {
+            // Run the resulting JAR file
+            println("Running JAR file $jarFile with arguments for APK: ${apkFile.absolutePath}")
+            exec {
+                commandLine("java", "-jar", jarFile.absolutePath, "--source", unzipDir)
+            }
+        } catch (e: ExecException) {
+            throw GradleException(
+                "The JAR execution failed with an error: ${e.message}. " +
+                        "Please check the JAR's output for more details."
+            )
+        }
+
+        // Copy WFF file into src if exists
+        if (optimizedWffPath.exists()) {
+            copy {
+                from(optimizedWffPath)
+                into("src/main/res/raw")
+            }
+        } else {
+            throw GradleException("Optimized WFF not found at $optimizedWffPath")
+        }
+    }
+}
+
