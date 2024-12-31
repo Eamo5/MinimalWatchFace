@@ -1,0 +1,42 @@
+name: Wear OS CI Workflow
+
+on: [push, workflow_dispatch]
+
+jobs:
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: 17
+          cache: 'gradle'
+
+      - name: Validate WFF XML
+        shell: bash
+        run: ./gradlew watchface:validateWffXml
+
+      - name: Build debug artifacts
+        shell: bash
+        run: ./gradlew watchface:assembleDebug
+
+      - name: Build release artifacts
+        shell: bash
+        run: ./gradlew watchface:assembleRelease
+
+      - name: Validate memory footprint
+        shell: bash
+        run: ./gradlew watchface:validateMemoryFootprint
+
+      - uses: actions/upload-artifact@v4
+        with:
+          path: |
+            watchface/build/outputs/apk/debug/watchface-debug.apk
+            watchface/build/outputs/apk/release/watchface-release.apk
