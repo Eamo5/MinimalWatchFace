@@ -23,13 +23,21 @@ jobs:
         shell: bash
         run: ./gradlew watchface:validateWffXml
 
-      - name: Build debug artifacts
+      - name: Build WearOS 3 debug artifacts
         shell: bash
-        run: ./gradlew watchface:assembleDebug
+        run: ./gradlew watchface:assembleWear3Debug
 
-      - name: Build release artifacts
+      - name: Build WearOS 3 release artifacts
         shell: bash
-        run: ./gradlew watchface:assembleRelease
+        run: ./gradlew watchface:assembleWear3Release
+
+      - name: Build WearOS 4 debug artifacts
+        shell: bash
+        run: ./gradlew watchface:assembleWear4Debug
+
+      - name: Build WearOS 4 release artifacts
+        shell: bash
+        run: ./gradlew watchface:assembleWear4Release
 
       - name: Validate memory footprint
         shell: bash
@@ -38,5 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: |
-            watchface/build/outputs/apk/debug/watchface-debug.apk
-            watchface/build/outputs/apk/release/watchface-release.apk
+            watchface/build/outputs/apk/wear3/debug/watchface-wear3-debug.apk
+            watchface/build/outputs/apk/wear4/debug/watchface-wear4-debug.apk
+            watchface/build/outputs/apk/wear3/release/watchface-wear3-release.apk
+            watchface/build/outputs/apk/wear4/release/watchface-wear4-release.apk

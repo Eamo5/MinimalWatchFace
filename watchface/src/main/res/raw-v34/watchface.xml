@@ -6,6 +6,9 @@
         <!-- Battery Percentage -->
         <BooleanConfiguration defaultValue="TRUE" displayName="show_battery_percentage_label" id="show_battery_percentage" screenReaderText="show_battery_percentage_label"/>
 
+        <!-- Weather -->
+        <BooleanConfiguration defaultValue="TRUE" displayName="show_weather_label" id="show_weather" screenReaderText="show_weather_label"/>
+
         <!-- Theming -->
         <ColorConfiguration defaultValue="0" displayName="left_complication_color_label" id="leftComplication" screenReaderText="left_complication_color_label">
             <ColorOption colors="#6495ED #27408B" displayName="color_cornflower_blue" id="0"/>
@@ -167,6 +170,47 @@
             <ColorOption colors="#FFFFFF" displayName="color_white" id="50"/>
         </ColorConfiguration>
     </UserConfigurations>
+
+    <!-- Weather Bitmap Fonts -->
+    <BitmapFonts>
+        <BitmapFont name="weather_icons_day">
+            <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="7" marginTop="3" name="1" resource="ic_clear" width="46"/>
+            <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
+            <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
+            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="5" resource="ic_heavy_snow" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="6" resource="ic_rain" width="46"/>
+            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="7" resource="ic_snow" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="3" marginTop="3" name="8" resource="ic_sunny" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="9" resource="ic_thunderstorm" width="46"/>
+            <Word height="96" name="10" resource="ic_sleet" width="96"/>
+            <Word height="96" name="11" resource="ic_snow" width="96"/>
+            <Word height="96" name="12" resource="ic_rain" width="96"/>
+            <Word height="96" name="13" resource="ic_fog" width="96"/>
+            <Word height="96" name="14" resource="ic_partly_cloudy_day" width="96"/>
+            <Word height="96" name="15" resource="ic_windy" width="96"/>
+        </BitmapFont>
+        <!-- Icon set for night, [WEATHER.IS_DAY] == 0 -->
+        <BitmapFont name="weather_icons_night">
+            <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="7" marginTop="3" name="1" resource="ic_clear" width="46"/>
+            <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
+            <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
+            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="5" resource="ic_heavy_snow" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="6" resource="ic_rain" width="46"/>
+            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="7" resource="ic_snow" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="3" marginTop="3" name="8" resource="ic_sunny" width="46"/>
+            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="9" resource="ic_thunderstorm" width="46"/>
+            <Word height="96" name="10" resource="ic_sleet" width="96"/>
+            <Word height="96" name="11" resource="ic_snow" width="96"/>
+            <Word height="96" name="12" resource="ic_rain" width="96"/>
+            <Word height="96" name="13" resource="ic_fog" width="96"/>
+            <Word height="96" name="14" resource="ic_partly_cloudy_night" width="96"/>
+            <Word height="96" name="15" resource="ic_windy" width="96"/>
+        </BitmapFont>
+    </BitmapFonts>
 
     <!-- WatchFace Scene -->
     <Scene backgroundColor="#ff000000">
@@ -659,7 +703,7 @@
         </ComplicationSlot>
 
         <ComplicationSlot displayName="Right" height="112" name="right_complication" slotId="1" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="276" y="40">
-            <DefaultProviderPolicy defaultSystemProvider="SUNRISE_SUNSET" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderHeartPointsService" primaryProviderType="RANGED_VALUE"/>
+            <DefaultProviderPolicy defaultSystemProvider="HEART_RATE" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderHeartPointsService" primaryProviderType="RANGED_VALUE"/>
             <BoundingOval height="112" outlinePadding="2" width="112" x="0" y="0"/>
 
             <Complication type="SHORT_TEXT">
@@ -1131,16 +1175,97 @@
             </Complication>
         </ComplicationSlot>
 
-        <PartText alpha="255" height="47" width="300" x="70" y="300">
-            <Localization calendar="GREGORIAN"/>
-            <Text align="CENTER" ellipsis="FALSE">
-                <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
-                    <Template>%s
-                        <Parameter expression="icuText(&quot;MMMMdE&quot;)"/>
-                    </Template>
-                </Font>
-            </Text>
-        </PartText>
+        <BooleanConfiguration id="show_weather">
+            <BooleanOption id="TRUE">
+                <Group height="255" name="Weather_Condition" width="200" x="15" y="300">
+                    <Condition>
+                        <Expressions>
+                            <Expression name="is_weather_available">[WEATHER.IS_AVAILABLE]</Expression>
+                        </Expressions>
+                        <Compare expression="is_weather_available">
+                            <Group height="255" name="Weather_Available_View" width="410" x="10" y="0">
+                                <PartText alpha="255" height="47" width="250" x="0" y="0">
+                                    <Localization calendar="GREGORIAN"/>
+                                    <Text align="CENTER" ellipsis="FALSE">
+                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
+                                            <Template>%s
+                                                <Parameter expression="icuText(&quot;MMMdE&quot;)"/>
+                                            </Template>
+                                        </Font>
+                                    </Text>
+                                </PartText>
+                                <Group height="47" name="CurrentConditionIcon" width="47" x="225" y="0">
+                                    <Condition>
+                                        <Expressions>
+                                            <Expression name="is_day">[WEATHER.IS_DAY]</Expression>
+                                        </Expressions>
+                                        <Compare expression="is_day">
+                                            <PartText height="47" name="current_condition_icon" width="47" x="0" y="0">
+                                                <Text>
+                                                    <BitmapFont family="weather_icons_day" size="47">
+                                                        <Template><![CDATA[%s]]>
+                                                            <Parameter expression="[WEATHER.CONDITION] &lt;= 15 ? [WEATHER.CONDITION] : 0"/>
+                                                        </Template>
+                                                    </BitmapFont>
+                                                </Text>
+                                            </PartText>
+                                        </Compare>
+                                        <Default>
+                                            <PartText height="47" name="current_condition_icon" width="47" x="0" y="0">
+                                                <Text>
+                                                    <BitmapFont family="weather_icons_night" size="47">
+                                                        <Template><![CDATA[%s]]>
+                                                            <Parameter expression="[WEATHER.CONDITION] &lt;= 15 ? [WEATHER.CONDITION] : 0"/>
+                                                        </Template>
+                                                    </BitmapFont>
+                                                </Text>
+                                            </PartText>
+                                        </Default>
+                                    </Condition>
+                                </Group>
+                                <Group height="47" name="CurrentTemp" width="137" x="253" y="0">
+                                    <PartText height="37" width="127" x="5" y="4">
+                                        <Text>
+                                            <Font family="SYNC_TO_DEVICE" size="31">
+                                                <Template><![CDATA[%s° %s]]>
+                                                    <Parameter expression="[WEATHER.TEMPERATURE]"/>
+                                                    <Parameter expression="[WEATHER.TEMPERATURE_UNIT] == 1 ? &quot;C&quot; : &quot;F&quot;"/>
+                                                </Template>
+                                            </Font>
+                                        </Text>
+                                    </PartText>
+                                </Group>
+                            </Group>
+                        </Compare>
+                        <Default>
+                            <!-- Show detailed calendar when weather unavailable -->
+                            <PartText alpha="255" height="47" width="300" x="55" y="0">
+                                <Localization calendar="GREGORIAN"/>
+                                <Text align="CENTER" ellipsis="FALSE">
+                                    <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
+                                        <Template>%s
+                                            <Parameter expression="icuText(&quot;MMMMdE&quot;)"/>
+                                        </Template>
+                                    </Font>
+                                </Text>
+                            </PartText>
+                        </Default>
+                    </Condition>
+                </Group>
+            </BooleanOption>
+            <BooleanOption id="FALSE">
+                <PartText alpha="255" height="47" width="300" x="70" y="300">
+                    <Localization calendar="GREGORIAN"/>
+                    <Text align="CENTER" ellipsis="FALSE">
+                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
+                            <Template>%s
+                                <Parameter expression="icuText(&quot;MMMMdE&quot;)"/>
+                            </Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </BooleanOption>
+        </BooleanConfiguration>
 
         <BooleanConfiguration id="show_battery_percentage">
             <BooleanOption id="TRUE">
