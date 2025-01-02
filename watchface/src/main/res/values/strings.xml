@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Minimal Watch Face</string>
 
+    <!-- Complication Names -->
+    <string name="left_complication">Left</string>
+    <string name="right_complication">Right</string>
+
     <!-- Colors -->
     <string name="color_cornflower_blue">Cornflower Blue</string>
     <string name="color_medium_slate_blue">Medium Slate Blue</string>

@@ -23,14 +23,12 @@ android {
             dimension = "version"
             manifestPlaceholders["wffVersion"] = "1"
             minSdk = 33
-            versionCode = versionCode?.inc()
             versionName = "${libs.versions.versionName.get()}-4"
         }
         create("wear5") {
             dimension = "version"
             manifestPlaceholders["wffVersion"] = "2"
             minSdk = 34
-            versionCode = versionCode?.inc()
             versionName = "${libs.versions.versionName.get()}-5"
         }
     }

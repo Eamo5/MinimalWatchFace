@@ -169,20 +169,40 @@
     </UserConfigurations>
 
     <!-- WatchFace Scene -->
-    <Scene backgroundColor="#ff000000">
-        <DigitalClock height="450" tintColor="[CONFIGURATION.clockText]" width="450" x="0" y="0">
-            <TimeText align="CENTER" alpha="255" format="h:mm" height="150" hourFormat="SYNC_TO_DEVICE" width="450" x="0" y="145">
-                <Variant mode="AMBIENT" target="alpha" value="0"/>
-                <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="155" slant="NORMAL" weight="NORMAL"/>
-            </TimeText>
-            <TimeText align="CENTER" alpha="0" format="h:mm" height="150" hourFormat="SYNC_TO_DEVICE" width="450" x="0" y="145">
-                <Variant mode="AMBIENT" target="alpha" value="255"/>
-                <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="155" slant="NORMAL" weight="NORMAL"/>
+    <Scene>
+        <DigitalClock height="155" tintColor="[CONFIGURATION.clockText]" width="450" x="0" y="150">
+            <TimeText format="h:mm" height="155" width="450" x="0" y="0">
+                <Font family="SYNC_TO_DEVICE" size="155"/>
             </TimeText>
         </DigitalClock>
 
+        <PartText height="47" width="450" x="0" y="300">
+            <Localization/>
+            <Text ellipsis="TRUE">
+                <Font family="SYNC_TO_DEVICE" size="31">
+                    <Template>%s
+                        <Parameter expression="icuText(&quot;MMMMdEEEE&quot;)"/>
+                    </Template>
+                </Font>
+            </Text>
+        </PartText>
+
+        <BooleanConfiguration id="show_battery_percentage">
+            <BooleanOption id="TRUE">
+                <PartText height="31" width="450" x="0" y="360">
+                    <Text>
+                        <Font family="SYNC_TO_DEVICE" size="31">
+                            <Template>%s%%
+                                <Parameter expression="[BATTERY_PERCENT]"/>
+                            </Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </BooleanOption>
+        </BooleanConfiguration>
+
         <!-- Top Left Complication -->
-        <ComplicationSlot displayName="Left" height="112" name="left_complication" slotId="0" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="60" y="40">
+        <ComplicationSlot displayName="left_complication" height="112" name="left_complication" slotId="0" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="60" y="40">
             <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderStepCountService" primaryProviderType="RANGED_VALUE"/>
             <BoundingOval height="112" outlinePadding="2" width="112" x="0" y="0"/>
 
@@ -207,103 +227,45 @@
                                 </Expression>
                             </Expressions>
                             <Compare expression="monochromatic_ambientImage">
-                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="20">
+                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="16">
                                     <Variant mode="AMBIENT" target="alpha" value="255"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="20">
+                                <PartImage height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="16">
                                     <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
-                                <PartText alpha="0" height="32" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="255" height="32" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                             </Compare>
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="20">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
+                                <PartImage height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="16">
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="32" tintColor="[CONFIGURATION.leftComplication.0]" width="32" x="40" y="20">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartText alpha="0" height="30" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="255" height="30" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                             </Compare>
                         </Condition>
+                        <PartText height="28" width="112" x="0" y="64">
+                            <Text ellipsis="TRUE">
+                                <Font family="SYNC_TO_DEVICE" size="28">
+                                    <Template>%s
+                                        <Parameter expression="[COMPLICATION.TEXT]"/>
+                                    </Template>
+                                </Font>
+                            </Text>
+                        </PartText>
                     </Compare>
                     <Compare expression="shortText_title">
-                        <Group alpha="0" height="200" name="shortText_title_ambient" width="200" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <PartText height="30" width="112" x="0" y="20">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                        <Group height="112" name="shortText_title" width="112" x="0" y="0">
+                            <PartText height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="112" x="0" y="20">
+                                <Text ellipsis="TRUE">
+                                    <Font family="SYNC_TO_DEVICE" size="28">
                                         <Template>%s
                                             <Parameter expression="[COMPLICATION.TEXT]"/>
                                         </Template>
                                     </Font>
                                 </Text>
                             </PartText>
-                            <PartText height="30" width="112" x="0" y="56">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                        <Template>%s
-                                            <Parameter expression="[COMPLICATION.TITLE]"/>
-                                        </Template>
-                                    </Font>
-                                </Text>
-                            </PartText>
-                        </Group>
-                        <Group alpha="255" height="200" name="shortText_title" width="200" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <PartText height="30" width="112" x="0" y="20">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                        <Template>%s
-                                            <Parameter expression="[COMPLICATION.TEXT]"/>
-                                        </Template>
-                                    </Font>
-                                </Text>
-                            </PartText>
-                            <PartText height="30" width="112" x="0" y="56">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                            <PartText height="28" width="112" x="0" y="64">
+                                <Text ellipsis="TRUE">
+                                    <Font family="SYNC_TO_DEVICE" size="28">
                                         <Template>%s
                                             <Parameter expression="[COMPLICATION.TITLE]"/>
                                         </Template>
@@ -314,20 +276,9 @@
                     </Compare>
                     <!-- Text, on its own, with no Icon or Title -->
                     <Default>
-                        <PartText alpha="255" height="112" width="112" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                    <Template>%s
-                                        <Parameter expression="[COMPLICATION.TEXT]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText alpha="0" height="112" width="112" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                        <PartText height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="112" x="0" y="0">
+                            <Text ellipsis="TRUE">
+                                <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
                                         <Parameter expression="[COMPLICATION.TEXT]"/>
                                     </Template>
@@ -338,29 +289,14 @@
                 </Condition>
             </Complication>
             <Complication type="RANGED_VALUE">
-                <Group alpha="0" height="112" name="ranged_value_ring_ambient" width="112" x="0" y="0">
-                    <Variant mode="AMBIENT" target="alpha" value="255"/>
+                <Group height="112" name="ranged_value_ring" width="112" x="0" y="0">
                     <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
+                        <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
                             <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.1]" thickness="4"/>
                         </Arc>
                     </PartDraw>
                     <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
-                            <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.0]" thickness="4"/>
-                        </Arc>
-                    </PartDraw>
-                </Group>
-                <Group alpha="255" height="112" name="ranged_value_ring" width="112" x="0" y="0">
-                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                    <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.1]" thickness="4"/>
-                        </Arc>
-                    </PartDraw>
-                    <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
+                        <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
                             <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
                             <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.0]" thickness="4"/>
                         </Arc>
@@ -400,7 +336,7 @@
                                     <Variant mode="AMBIENT" target="alpha" value="255"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="28" x="42" y="80">
+                                <PartImage height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="28" x="42" y="80">
                                     <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
@@ -410,12 +346,7 @@
                               for ambient mode, use the normal image, with tinting applied.
                             -->
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="28" x="42" y="80">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartImage alpha="255" height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="28" x="42" y="80">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
+                                <PartImage height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="28" x="42" y="80">
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
                             </Compare>
@@ -429,40 +360,18 @@
                             </Expressions>
                             <!-- Both Title and Text are present, show text above title -->
                             <Compare expression="monochromatic_both_labels">
-                                <PartText alpha="0" height="24" width="112" x="0" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="24" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="0" height="24" width="112" x="0" y="55">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="22" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TITLE]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                                 <PartText height="24" width="112" x="0" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="24" slant="NORMAL" weight="NORMAL">
+                                    <Text ellipsis="TRUE">
+                                        <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="24">
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TEXT]"/>
                                             </Template>
                                         </Font>
                                     </Text>
                                 </PartText>
-                                <PartText height="24" width="112" x="0" y="55">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="22" slant="NORMAL" weight="NORMAL">
+                                <PartText height="22" width="112" x="0" y="55">
+                                    <Text ellipsis="TRUE">
+                                        <Font family="SYNC_TO_DEVICE" size="22">
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TITLE]"/>
                                             </Template>
@@ -472,21 +381,9 @@
                             </Compare>
                             <!-- Only one of Title or Text is present -->
                             <Default>
-                                <PartText alpha="0" height="112" width="112" x="0" y="0">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <!-- In this example, prefer Text over Title -->
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText height="112" width="112" x="0" y="0">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                                <PartText height="28" width="112" x="0" y="42">
+                                    <Text ellipsis="TRUE">
+                                        <Font family="SYNC_TO_DEVICE" size="28">
                                             <!-- Prefer Text over Title -->
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
@@ -522,12 +419,7 @@
                                 </PartImage>
                             </Compare>
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="52" tintColor="[CONFIGURATION.leftComplication.0]" width="52" x="30" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
                                 <PartImage height="52" tintColor="[CONFIGURATION.leftComplication.0]" width="52" x="30" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
                             </Compare>
@@ -537,15 +429,8 @@
             </Complication>
             <Complication type="MONOCHROMATIC_IMAGE">
                 <Group height="112" name="monochromatic_oval" width="112" x="0" y="0">
-                    <PartDraw alpha="0" height="112" width="112" x="0" y="0">
-                        <Variant mode="AMBIENT" target="alpha" value="255"/>
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="360" height="100" startAngle="0" width="100">
-                            <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.0]" thickness="2"/>
-                        </Arc>
-                    </PartDraw>
-                    <PartDraw alpha="255" height="112" width="112" x="0" y="0">
-                        <Variant mode="AMBIENT" target="alpha" value="0"/>
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="360" height="100" startAngle="0" width="100">
+                    <PartDraw height="112" width="112" x="0" y="0">
+                        <Arc centerX="56" centerY="56" endAngle="360" height="100" startAngle="0" width="100">
                             <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.0]" thickness="2"/>
                         </Arc>
                     </PartDraw>
@@ -560,22 +445,17 @@
                         </Expression>
                     </Expressions>
                     <Compare expression="monochromatic_ambientImage">
+                        <PartImage height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
+                            <Variant mode="AMBIENT" target="alpha" value="0"/>
+                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                        </PartImage>
                         <PartImage alpha="0" height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="255"/>
                             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                         </PartImage>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
                     </Compare>
                     <Compare expression="monochromatic_noAmbientImage">
-                        <PartImage alpha="0" height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
+                        <PartImage height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
                             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                         </PartImage>
                     </Compare>
@@ -615,7 +495,7 @@
                                 </Default>
                             </Condition>
                         </Group>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
+                        <PartImage height="64" tintColor="[CONFIGURATION.leftComplication.0]" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="0"/>
                             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                         </PartImage>
@@ -649,7 +529,7 @@
                                 </Default>
                             </Condition>
                         </Group>
-                        <PartImage alpha="255" height="64" width="64" x="24" y="24">
+                        <PartImage height="64" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="0"/>
                             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                         </PartImage>
@@ -658,7 +538,9 @@
             </Complication>
         </ComplicationSlot>
 
-        <ComplicationSlot displayName="Right" height="112" name="right_complication" slotId="1" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="276" y="40">
+
+        <!-- Top Right Complication -->
+        <ComplicationSlot displayName="right_complication" height="112" name="right_complication" slotId="1" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="278" y="40">
             <DefaultProviderPolicy defaultSystemProvider="SUNRISE_SUNSET" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderHeartPointsService" primaryProviderType="RANGED_VALUE"/>
             <BoundingOval height="112" outlinePadding="2" width="112" x="0" y="0"/>
 
@@ -683,103 +565,45 @@
                                 </Expression>
                             </Expressions>
                             <Compare expression="monochromatic_ambientImage">
-                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="20">
+                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="16">
                                     <Variant mode="AMBIENT" target="alpha" value="255"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="20">
+                                <PartImage height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="16">
                                     <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
-                                <PartText alpha="0" height="32" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="255" height="32" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                             </Compare>
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="20">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
+                                <PartImage height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="16">
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="32" tintColor="[CONFIGURATION.rightComplication.0]" width="32" x="40" y="20">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartText alpha="0" height="30" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="255" height="30" width="112" x="0" y="60">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                             </Compare>
                         </Condition>
+                        <PartText height="28" width="112" x="0" y="64">
+                            <Text ellipsis="TRUE">
+                                <Font family="SYNC_TO_DEVICE" size="28">
+                                    <Template>%s
+                                        <Parameter expression="[COMPLICATION.TEXT]"/>
+                                    </Template>
+                                </Font>
+                            </Text>
+                        </PartText>
                     </Compare>
                     <Compare expression="shortText_title">
-                        <Group alpha="0" height="200" name="shortText_title_ambient" width="200" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <PartText height="30" width="112" x="0" y="20">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                        <Group height="112" name="shortText_title" width="112" x="0" y="0">
+                            <PartText height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="112" x="0" y="20">
+                                <Text ellipsis="TRUE">
+                                    <Font family="SYNC_TO_DEVICE" size="28">
                                         <Template>%s
                                             <Parameter expression="[COMPLICATION.TEXT]"/>
                                         </Template>
                                     </Font>
                                 </Text>
                             </PartText>
-                            <PartText height="30" width="112" x="0" y="56">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                        <Template>%s
-                                            <Parameter expression="[COMPLICATION.TITLE]"/>
-                                        </Template>
-                                    </Font>
-                                </Text>
-                            </PartText>
-                        </Group>
-                        <Group alpha="255" height="200" name="shortText_title" width="200" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <PartText height="30" width="112" x="0" y="20">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                        <Template>%s
-                                            <Parameter expression="[COMPLICATION.TEXT]"/>
-                                        </Template>
-                                    </Font>
-                                </Text>
-                            </PartText>
-                            <PartText height="30" width="112" x="0" y="56">
-                                <Text align="CENTER" ellipsis="TRUE">
-                                    <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                            <PartText height="28" width="112" x="0" y="64">
+                                <Text ellipsis="TRUE">
+                                    <Font family="SYNC_TO_DEVICE" size="28">
                                         <Template>%s
                                             <Parameter expression="[COMPLICATION.TITLE]"/>
                                         </Template>
@@ -790,20 +614,9 @@
                     </Compare>
                     <!-- Text, on its own, with no Icon or Title -->
                     <Default>
-                        <PartText alpha="255" height="112" width="112" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                    <Template>%s
-                                        <Parameter expression="[COMPLICATION.TEXT]"/>
-                                    </Template>
-                                </Font>
-                            </Text>
-                        </PartText>
-                        <PartText alpha="0" height="112" width="112" x="0" y="0">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Text align="CENTER" ellipsis="TRUE">
-                                <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                        <PartText height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="112" x="0" y="0">
+                            <Text ellipsis="TRUE">
+                                <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
                                         <Parameter expression="[COMPLICATION.TEXT]"/>
                                     </Template>
@@ -814,29 +627,14 @@
                 </Condition>
             </Complication>
             <Complication type="RANGED_VALUE">
-                <Group alpha="0" height="112" name="ranged_value_ring_ambient" width="112" x="0" y="0">
-                    <Variant mode="AMBIENT" target="alpha" value="255"/>
+                <Group height="112" name="ranged_value_ring" width="112" x="0" y="0">
                     <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
+                        <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
                             <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.1]" thickness="4"/>
                         </Arc>
                     </PartDraw>
                     <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
-                            <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.0]" thickness="4"/>
-                        </Arc>
-                    </PartDraw>
-                </Group>
-                <Group alpha="255" height="112" name="ranged_value_ring" width="112" x="0" y="0">
-                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                    <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.1]" thickness="4"/>
-                        </Arc>
-                    </PartDraw>
-                    <PartDraw height="112" width="112" x="0" y="0">
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="150" height="94" startAngle="-150" width="94">
+                        <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
                             <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
                             <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.0]" thickness="4"/>
                         </Arc>
@@ -876,7 +674,7 @@
                                     <Variant mode="AMBIENT" target="alpha" value="255"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                                 </PartImage>
-                                <PartImage alpha="255" height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="28" x="42" y="80">
+                                <PartImage height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="28" x="42" y="80">
                                     <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
@@ -886,12 +684,7 @@
                               for ambient mode, use the normal image, with tinting applied.
                             -->
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="28" x="42" y="80">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
-                                <PartImage alpha="255" height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="28" x="42" y="80">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
+                                <PartImage height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="28" x="42" y="80">
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
                             </Compare>
@@ -903,42 +696,20 @@
                                     <![CDATA[([COMPLICATION.TEXT] != null && [COMPLICATION.TITLE] != null)]]>
                                 </Expression>
                             </Expressions>
-                            <!-- Both Title and Text are present, show text above title. -->
+                            <!-- Both Title and Text are present, show text above title -->
                             <Compare expression="monochromatic_both_labels">
-                                <PartText alpha="0" height="24" width="112" x="0" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="24" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText alpha="0" height="24" width="112" x="0" y="55">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="22" slant="NORMAL" weight="NORMAL">
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TITLE]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
                                 <PartText height="24" width="112" x="0" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="24" slant="NORMAL" weight="NORMAL">
+                                    <Text ellipsis="TRUE">
+                                        <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="24">
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TEXT]"/>
                                             </Template>
                                         </Font>
                                     </Text>
                                 </PartText>
-                                <PartText height="24" width="112" x="0" y="55">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="22" slant="NORMAL" weight="NORMAL">
+                                <PartText height="22" width="112" x="0" y="55">
+                                    <Text ellipsis="TRUE">
+                                        <Font family="SYNC_TO_DEVICE" size="22">
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TITLE]"/>
                                             </Template>
@@ -948,21 +719,9 @@
                             </Compare>
                             <!-- Only one of Title or Text is present -->
                             <Default>
-                                <PartText alpha="0" height="112" width="112" x="0" y="0">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
-                                            <!-- Prefer Text over Title -->
-                                            <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <PartText height="112" width="112" x="0" y="0">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
-                                    <Text align="CENTER" ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="28" slant="NORMAL" weight="NORMAL">
+                                <PartText height="28" width="112" x="0" y="42">
+                                    <Text ellipsis="TRUE">
+                                        <Font family="SYNC_TO_DEVICE" size="28">
                                             <!-- Prefer Text over Title -->
                                             <Template>%s
                                                 <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
@@ -973,7 +732,10 @@
                             </Default>
                         </Condition>
                     </Compare>
-                    <!-- Image is present, but no text or title -->
+                    <!--
+                      Image is present, but no text or title, so show the image centrally
+                      in the complication, larger then when the text or title is available
+                    -->
                     <Compare expression="rangedValue_image_noTextNorTitle">
                         <Condition>
                             <Expressions>
@@ -995,12 +757,7 @@
                                 </PartImage>
                             </Compare>
                             <Compare expression="monochromatic_noAmbientImage">
-                                <PartImage alpha="0" height="52" tintColor="[CONFIGURATION.rightComplication.0]" width="52" x="30" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="255"/>
-                                    <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                                </PartImage>
                                 <PartImage height="52" tintColor="[CONFIGURATION.rightComplication.0]" width="52" x="30" y="30">
-                                    <Variant mode="AMBIENT" target="alpha" value="0"/>
                                     <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                                 </PartImage>
                             </Compare>
@@ -1010,15 +767,8 @@
             </Complication>
             <Complication type="MONOCHROMATIC_IMAGE">
                 <Group height="112" name="monochromatic_oval" width="112" x="0" y="0">
-                    <PartDraw alpha="0" height="112" width="112" x="0" y="0">
-                        <Variant mode="AMBIENT" target="alpha" value="255"/>
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="360" height="100" startAngle="0" width="100">
-                            <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.0]" thickness="2"/>
-                        </Arc>
-                    </PartDraw>
-                    <PartDraw alpha="255" height="112" width="112" x="0" y="0">
-                        <Variant mode="AMBIENT" target="alpha" value="0"/>
-                        <Arc centerX="56" centerY="56" direction="CLOCKWISE" endAngle="360" height="100" startAngle="0" width="100">
+                    <PartDraw height="112" width="112" x="0" y="0">
+                        <Arc centerX="56" centerY="56" endAngle="360" height="100" startAngle="0" width="100">
                             <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.0]" thickness="2"/>
                         </Arc>
                     </PartDraw>
@@ -1033,22 +783,17 @@
                         </Expression>
                     </Expressions>
                     <Compare expression="monochromatic_ambientImage">
+                        <PartImage height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
+                            <Variant mode="AMBIENT" target="alpha" value="0"/>
+                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
+                        </PartImage>
                         <PartImage alpha="0" height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="255"/>
                             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE_AMBIENT]"/>
                         </PartImage>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
                     </Compare>
                     <Compare expression="monochromatic_noAmbientImage">
-                        <PartImage alpha="0" height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="255"/>
-                            <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
-                        </PartImage>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
-                            <Variant mode="AMBIENT" target="alpha" value="0"/>
+                        <PartImage height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
                             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
                         </PartImage>
                     </Compare>
@@ -1088,7 +833,7 @@
                                 </Default>
                             </Condition>
                         </Group>
-                        <PartImage alpha="255" height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
+                        <PartImage height="64" tintColor="[CONFIGURATION.rightComplication.0]" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="0"/>
                             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                         </PartImage>
@@ -1122,7 +867,7 @@
                                 </Default>
                             </Condition>
                         </Group>
-                        <PartImage alpha="255" height="64" width="64" x="24" y="24">
+                        <PartImage height="64" width="64" x="24" y="24">
                             <Variant mode="AMBIENT" target="alpha" value="0"/>
                             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
                         </PartImage>
@@ -1130,30 +875,5 @@
                 </Condition>
             </Complication>
         </ComplicationSlot>
-
-        <PartText alpha="255" height="47" width="300" x="70" y="300">
-            <Localization calendar="GREGORIAN"/>
-            <Text align="CENTER" ellipsis="FALSE">
-                <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
-                    <Template>%s
-                        <Parameter expression="icuText(&quot;MMMMdE&quot;)"/>
-                    </Template>
-                </Font>
-            </Text>
-        </PartText>
-
-        <BooleanConfiguration id="show_battery_percentage">
-            <BooleanOption id="TRUE">
-                <PartText alpha="255" height="30" name="BatteryPercentage" pivotX="0.5" pivotY="0.5" tintColor="#ffffffff" width="75" x="188" y="365">
-                    <Text align="CENTER" ellipsis="FALSE">
-                        <Font color="#ffffffff" family="SYNC_TO_DEVICE" size="31" slant="NORMAL" weight="NORMAL">
-                            <Template>%s%%
-                                <Parameter expression="[BATTERY_PERCENT]"/>
-                            </Template>
-                        </Font>
-                    </Text>
-                </PartText>
-            </BooleanOption>
-        </BooleanConfiguration>
     </Scene>
 </WatchFace>
