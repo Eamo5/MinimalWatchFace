@@ -116,23 +116,33 @@ tasks.register("validateMemoryFootprint") {
         .find { it.contains("Debug", ignoreCase = true) }?.let { "debug" }
         ?: project.gradle.startParameter.taskNames
             .find { it.contains("Release", ignoreCase = true) }?.let { "release" }
-        ?: "release" // Default to debug if no variant is specified
 
     val buildFlavor = project.gradle.startParameter.taskNames
         .find { it.contains("wear5", ignoreCase = true) }?.let { "wear5" }
         ?: project.gradle.startParameter.taskNames
             .find { it.contains("wear4", ignoreCase = true) }?.let { "wear4" }
-        ?: "wear5" // Default to wear 5 if no variant is specified
 
     val relativeDirPath = "../watchface-tools/play-validations"
     val buildTask = ":memory-footprint:jar"
     val jarFile = file("$relativeDirPath/memory-footprint/build/libs/memory-footprint.jar")
-    val outputApkFile = file(
-        "build/outputs/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
-    )
-    val intermediatesApkFile = file(
-        "build/intermediates/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
-    )
+
+    val apks = if (buildFlavor != null && buildVariant != null) {
+        listOf(
+            file("build/outputs/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"),
+            file("build/intermediates/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk")
+        )
+    } else {
+        listOf(
+            file("build/outputs/apk/wear4/debug/watchface-wear4-debug.apk"),
+            file("build/intermediates/apk/wear4/debug/watchface-wear4-debug.apk"),
+            file("build/outputs/apk/wear4/release/watchface-wear4-release.apk"),
+            file("build/intermediates/apk/wear4/release/watchface-wear4-release.apk"),
+            file("build/outputs/apk/wear5/debug/watchface-wear5-debug.apk"),
+            file("build/intermediates/apk/wear5/debug/watchface-wear5-debug.apk"),
+            file("build/outputs/apk/wear5/release/watchface-wear5-release.apk"),
+            file("build/intermediates/apk/wear5/release/watchface-wear5-release.apk")
+        )
+    }
     val schemaVersion = 2
     val ambientLimitMb = 10
     val activeLimitMb = 100
@@ -164,69 +174,77 @@ tasks.register("validateMemoryFootprint") {
             throw GradleException("JAR file not found at ${jarFile.absolutePath}")
         }
 
-        val apkFile = if (outputApkFile.exists()) {
-            println("Found APK in preferred path: ${outputApkFile.absolutePath}")
-            outputApkFile
-        } else if (intermediatesApkFile.exists()) {
-            println(
-                "Preferred APK not found. Using fallback path: ${intermediatesApkFile.absolutePath}"
-            )
-            intermediatesApkFile
-        } else {
-            throw GradleException(
-                """
-                APK file not found in either of the following locations:
-                - Preferred: ${outputApkFile.absolutePath}
-                - Fallback: ${intermediatesApkFile.absolutePath}
-                """.trimIndent()
-            )
-        }
+        var apkFound = false
 
-        try {
-            // Run the resulting JAR file
-            println("Running JAR file $jarFile with arguments for APK: ${apkFile.absolutePath}")
-            exec {
-                commandLine(
-                    "java", "-jar", jarFile.absolutePath,
-                    "--watch-face", apkFile.absolutePath,
-                    "--schema-version", schemaVersion.toString(),
-                    "--ambient-limit-mb", ambientLimitMb.toString(),
-                    "--active-limit-mb", activeLimitMb.toString(),
-                    *additionalArgs.toTypedArray()
+        apks.forEach {
+            if (it.exists()) {
+                apkFound = true
+            } else {
+                return@forEach
+            }
+
+            try {
+                // Run the resulting JAR file
+                println("Running JAR file $jarFile with arguments for APK: ${it.absolutePath}")
+                exec {
+                    commandLine(
+                        "java", "-jar", jarFile.absolutePath,
+                        "--watch-face", it.absolutePath,
+                        "--schema-version", schemaVersion.toString(),
+                        "--ambient-limit-mb", ambientLimitMb.toString(),
+                        "--active-limit-mb", activeLimitMb.toString(),
+                        *additionalArgs.toTypedArray()
+                    )
+                }
+            } catch (e: ExecException) {
+                throw GradleException(
+                    "The JAR execution failed with an error: ${e.message}. " +
+                            "Please check the JAR's output for more details."
                 )
             }
-        } catch (e: ExecException) {
-            throw GradleException(
-                "The JAR execution failed with an error: ${e.message}. " +
-                        "Please check the JAR's output for more details."
-            )
+        }
+        if (!apkFound) {
+            throw GradleException("No valid APK files found")
         }
     }
 }
 
 tasks.register("optimizeWff") {
-    // Release builds obfuscate resource files
-    val buildVariant = "debug"
+    val buildVariant = project.gradle.startParameter.taskNames
+        .find { it.contains("Debug", ignoreCase = true) }?.let { "debug" }
+        ?: project.gradle.startParameter.taskNames
+            .find { it.contains("Release", ignoreCase = true) }?.let { "release" }
+
+    if (buildVariant.equals("release")) {
+        throw GradleException("Release builds cannot be optimized due to obfuscation. " +
+                "Please optimize a debug build instead.")
+    }
 
     val buildFlavor = project.gradle.startParameter.taskNames
         .find { it.contains("wear5", ignoreCase = true) }?.let { "wear5" }
         ?: project.gradle.startParameter.taskNames
             .find { it.contains("wear4", ignoreCase = true) }?.let { "wear4" }
-        ?: "wear5" // Default to wear 5 if no variant is specified
 
     val relativeDir = "../watchface-tools/tools"
     val buildTask = ":wff-optimizer:jar"
     val jarFile = file("$relativeDir/wff-optimizer/build/libs/wff-optimizer.jar")
+    val wear4 = "wear4"
+    val wear5 = "wear5"
 
-    // Define APK file paths with appropriate string interpolation
-    val outputApkFile = file(
-        "build/outputs/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
-    )
-    val intermediatesApkFile = file(
-        "build/intermediates/apk/$buildFlavor/$buildVariant/watchface-$buildFlavor-$buildVariant.apk"
+    val apks = buildFlavor?.let {
+       // Test active build flavor
+       mapOf(
+           buildFlavor to
+                   file("build/outputs/apk/$buildFlavor/debug/watchface-$buildFlavor-debug.apk")
+       )
+    } ?: mapOf(
+       wear4 to file("build/outputs/apk/wear4/debug/watchface-wear4-debug.apk"),
+       wear4 to file("build/intermediates/apk/wear4/debug/watchface-wear4-debug.apk"),
+       wear5 to file("build/outputs/apk/wear5/debug/watchface-wear5-debug.apk"),
+       wear5 to file("build/intermediates/apk/wear5/debug/watchface-wear5-debug.apk")
     )
 
-    // Ensure the unzipDir path is properly constructed and cross-platform compatible
+    // Ensure the unzipDir path is properly constructed
     val unzipDir = file(layout.buildDirectory.dir("intermediates/unzipped_apk"))
     val optimizedWffPath = unzipDir.resolve("res/raw/watchface.xml")
 
@@ -255,52 +273,52 @@ tasks.register("optimizeWff") {
             throw GradleException("JAR file not found at ${jarFile.absolutePath}")
         }
 
-        // Determine which APK to use (output or intermediates)
-        val apkFile = if (outputApkFile.exists()) {
-            outputApkFile
-        } else if (intermediatesApkFile.exists()) {
-            intermediatesApkFile
-        } else {
-            throw GradleException(
-                "APK file not found in either of the following locations: $outputApkFile," +
-                        "$intermediatesApkFile"
-            )
-        }
-
-        // Create a temp directory in intermediates for unzipping the APK
-        if (unzipDir.exists()) {
-            unzipDir.deleteRecursively()
-        }
-        unzipDir.mkdirs()
-
-        // Use Gradle to unzip APK
-        copy {
-            from(zipTree(apkFile))
-            into(unzipDir)
-        }
-
-        // Execute WFF optimizer
-        try {
-            // Run the resulting JAR file
-            println("Running JAR file $jarFile with arguments for APK: ${apkFile.absolutePath}")
-            exec {
-                commandLine("java", "-jar", jarFile.absolutePath, "--source", unzipDir)
+        var apkFound = false
+        apks.forEach {
+            if (it.value.exists()) {
+                apkFound = true
+            } else {
+                return@forEach
             }
-        } catch (e: ExecException) {
-            throw GradleException(
-                "The JAR execution failed with an error: ${e.message}. " +
-                        "Please check the JAR's output for more details."
-            )
-        }
 
-        // Copy WFF file into src if exists
-        if (optimizedWffPath.exists()) {
+            // Create a temp directory in intermediates for unzipping the APK
+            if (unzipDir.exists()) {
+                unzipDir.deleteRecursively()
+            }
+            unzipDir.mkdirs()
+
+            // Use Gradle to unzip APK
             copy {
-                from(optimizedWffPath)
-                into("src/$buildFlavor/res/raw")
+                from(zipTree(it.key))
+                into(unzipDir)
             }
-        } else {
-            throw GradleException("Optimized WFF not found at $optimizedWffPath")
+
+            // Execute WFF optimizer
+            try {
+                // Run the resulting JAR file
+                println("Running JAR file $jarFile with arguments for APK: ${it.value.absolutePath}")
+                exec {
+                    commandLine("java", "-jar", jarFile.absolutePath, "--source", unzipDir)
+                }
+            } catch (e: ExecException) {
+                throw GradleException(
+                    "The JAR execution failed with an error: ${e.message}. " +
+                            "Please check the JAR's output for more details."
+                )
+            }
+
+            // Copy WFF file into src if exists
+            if (optimizedWffPath.exists()) {
+                copy {
+                    from(optimizedWffPath)
+                    into("src/${it.key}/res/raw")
+                }
+            } else {
+                throw GradleException("Optimized WFF not found at $optimizedWffPath")
+            }
+        }
+        if (!apkFound) {
+            throw GradleException("No valid APK files found")
         }
     }
 }
