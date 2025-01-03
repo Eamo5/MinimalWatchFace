@@ -175,7 +175,7 @@
     <BitmapFonts>
         <BitmapFont name="weather_icons_day">
             <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="7" marginTop="3" name="1" resource="ic_clear" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="6" marginTop="3" name="1" resource="ic_clear" width="46"/>
             <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
             <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
             <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
@@ -194,7 +194,7 @@
         <!-- Icon set for night, [WEATHER.IS_DAY] == 0 -->
         <BitmapFont name="weather_icons_night">
             <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="7" marginTop="3" name="1" resource="ic_clear" width="46"/>
+            <Character height="46" marginBottom="3" marginLeft="3" marginRight="6" marginTop="3" name="1" resource="ic_clear" width="46"/>
             <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
             <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
             <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
@@ -243,17 +243,19 @@
                         </Expressions>
                         <Compare expression="is_weather_available">
                             <Group height="47" name="weather_available_view" width="450" x="0" y="0">
-                                <PartText height="47" width="300" x="0" y="0">
-                                    <Localization/>
-                                    <Text ellipsis="TRUE">
-                                        <Font family="SYNC_TO_DEVICE" size="31">
-                                            <Template>%s
-                                                <Parameter expression="icuText(&quot;MMMdE&quot;)"/>
-                                            </Template>
-                                        </Font>
-                                    </Text>
-                                </PartText>
-                                <Group height="47" name="current_condition_icon" width="47" x="240" y="0">
+                                <Group height="47" name="weather_calendar" width="225" x="0" y="0">
+                                    <PartText height="47" width="225" x="0" y="0">
+                                        <Localization/>
+                                        <Text align="END" ellipsis="TRUE">
+                                            <Font family="SYNC_TO_DEVICE" size="31">
+                                                <Template>%s
+                                                    <Parameter expression="icuText(&quot;MMMdE&quot;)"/>
+                                                </Template>
+                                            </Font>
+                                        </Text>
+                                    </PartText>
+                                </Group>
+                                <Group height="47" name="current_condition_icon" width="47" x="236" y="0">
                                     <Condition>
                                         <Expressions>
                                             <Expression name="is_day">[WEATHER.IS_DAY]</Expression>
@@ -282,9 +284,9 @@
                                         </Default>
                                     </Condition>
                                 </Group>
-                                <Group height="47" name="current_temp" width="124" x="270" y="0">
-                                    <PartText height="47" width="124" x="0" y="0">
-                                        <Text>
+                                <Group height="47" name="current_temp" width="186" x="292" y="0">
+                                    <PartText height="47" width="186" x="0" y="0">
+                                        <Text align="START">
                                             <Font family="SYNC_TO_DEVICE" size="31">
                                                 <Template><![CDATA[%s° %s]]>
                                                     <Parameter expression="[WEATHER.TEMPERATURE]"/>
