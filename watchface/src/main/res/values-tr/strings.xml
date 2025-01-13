@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Sol</string>
+
+    <string name="right_complication">Sağ</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Peygamber Çiçeği Mavisi</string>
+
+    <string name="color_medium_slate_blue">Orta Gri Mavi</string>
+
+    <string name="color_dodger_blue">Dodger Mavisi</string>
+
+    <string name="color_deep_sky_blue">Derin Gök Mavisi</string>
+
+    <string name="color_steel_blue">Çelik Mavisi</string>
+
+    <string name="color_turquoise">Turkuaz</string>
+
+    <string name="color_medium_turquoise">Orta Turkuaz</string>
+
+    <string name="color_dark_turquoise">Koyu Turkuaz</string>
+
+    <string name="color_cyan">Mavi-yeşil</string>
+
+    <string name="color_aquamarine">Akuamarin</string>
+
+    <string name="color_spring_green">Bahar Yeşili</string>
+
+    <string name="color_medium_spring_green">Orta Bahar Yeşili</string>
+
+    <string name="color_light_sea_green">Açık Deniz Yeşili</string>
+
+    <string name="color_sea_green">Deniz Yeşili</string>
+
+    <string name="color_medium_sea_green">Orta Deniz Yeşili</string>
+
+    <string name="color_green">Yeşil</string>
+
+    <string name="color_lime_green">Limon yeşili</string>
+
+    <string name="color_forest_green">Orman Yeşili</string>
+
+    <string name="color_dark_green">Koyu Yeşil</string>
+
+    <string name="color_chartreuse">Şartöz</string>
+
+    <string name="color_yellow_green">Sarı Yeşil</string>
+
+    <string name="color_olive_drab">Zeytin yeşili</string>
+
+    <string name="color_lawn_green">Çim Yeşili</string>
+
+    <string name="color_yellow">Sarı</string>
+
+    <string name="color_gold">Altın</string>
+
+    <string name="color_goldenrod">Altınbaşak</string>
+
+    <string name="color_orange">Turuncu</string>
+
+    <string name="color_dark_orange">Koyu turuncu</string>
+
+    <string name="color_tomato">Domates</string>
+
+    <string name="color_orange_red">Turuncu Kırmızı</string>
+
+    <string name="color_red">Kırmızı</string>
+
+    <string name="color_crimson">Kızıl</string>
+
+    <string name="color_firebrick">Ateş tuğlası</string>
+
+    <string name="color_maroon">Bordo</string>
+
+    <string name="color_violet_red">Menekşe Kırmızı</string>
+
+    <string name="color_deep_pink">Derin Pembe</string>
+
+    <string name="color_hot_pink">Sıcak pembe</string>
+
+    <string name="color_pale_violet_red">Soluk Menekşe Kırmızı</string>
+
+    <string name="color_orchid">Orkide</string>
+
+    <string name="color_medium_orchid">Orta Boy Orkide</string>
+
+    <string name="color_purple">Mor</string>
+
+    <string name="color_dark_violet">Koyu Menekşe</string>
+
+    <string name="color_indigo">Çivit mavisi</string>
+
+    <string name="color_slate_blue">Gri Mavi</string>
+
+    <string name="color_lavender">Lavanta</string>
+
+    <string name="color_blue_violet">Mavi Menekşe</string>
+
+    <string name="color_royal_blue">Kraliyet Mavisi</string>
+
+    <string name="color_dark_salmon">Koyu somon</string>
+
+    <string name="color_chocolate">Çikolata</string>
+
+    <string name="color_rosy_brown">Pembe Kahverengi</string>
+
+    <string name="color_white">Beyaz</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Saat rengi</string>
+
+    <string name="left_complication_color_label">Sol komplikasyon rengi</string>
+
+    <string name="right_complication_color_label">Sağ komplikasyon rengi</string>
+
+    <string name="show_battery_percentage_label">Pil yüzdesini göster</string>
+
+    <string name="show_weather_label">Hava durumunu göster</string>
+
+</resources>

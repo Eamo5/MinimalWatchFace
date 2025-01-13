@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">غادر</string>
+
+    <string name="right_complication">يمين</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">أزرق زهر الذرة</string>
+
+    <string name="color_medium_slate_blue">أزرق رمادي متوسط</string>
+
+    <string name="color_dodger_blue">دودجر بلو</string>
+
+    <string name="color_deep_sky_blue">أزرق سماوي عميق</string>
+
+    <string name="color_steel_blue">أزرق فولاذي</string>
+
+    <string name="color_turquoise">فيروزي</string>
+
+    <string name="color_medium_turquoise">فيروزي متوسط</string>
+
+    <string name="color_dark_turquoise">فيروزي غامق</string>
+
+    <string name="color_cyan">سماوي</string>
+
+    <string name="color_aquamarine">زبرجد</string>
+
+    <string name="color_spring_green">أخضر الربيع</string>
+
+    <string name="color_medium_spring_green">أخضر ربيعي متوسط</string>
+
+    <string name="color_light_sea_green">أخضر بحري فاتح</string>
+
+    <string name="color_sea_green">أخضر البحر</string>
+
+    <string name="color_medium_sea_green">أخضر بحري متوسط</string>
+
+    <string name="color_green">أخضر</string>
+
+    <string name="color_lime_green">أخضر ليموني</string>
+
+    <string name="color_forest_green">غابة خضراء</string>
+
+    <string name="color_dark_green">أخضر غامق</string>
+
+    <string name="color_chartreuse">أخضر مصفر</string>
+
+    <string name="color_yellow_green">أصفر أخضر</string>
+
+    <string name="color_olive_drab">زيتوني داكن</string>
+
+    <string name="color_lawn_green">العشب الأخضر</string>
+
+    <string name="color_yellow">أصفر</string>
+
+    <string name="color_gold">ذهب</string>
+
+    <string name="color_goldenrod">العصا الذهبية</string>
+
+    <string name="color_orange">البرتقالي</string>
+
+    <string name="color_dark_orange">برتقالي غامق</string>
+
+    <string name="color_tomato">طماطم</string>
+
+    <string name="color_orange_red">برتقالي أحمر</string>
+
+    <string name="color_red">أحمر</string>
+
+    <string name="color_crimson">قرمزي</string>
+
+    <string name="color_firebrick">طوب حراري</string>
+
+    <string name="color_maroon">كستنائي</string>
+
+    <string name="color_violet_red">أحمر بنفسجي</string>
+
+    <string name="color_deep_pink">وردي غامق</string>
+
+    <string name="color_hot_pink">وردي ساخن</string>
+
+    <string name="color_pale_violet_red">أحمر بنفسجي باهت</string>
+
+    <string name="color_orchid">زهرة الأوركيد</string>
+
+    <string name="color_medium_orchid">اوركيد متوسط الحجم</string>
+
+    <string name="color_purple">أرجواني</string>
+
+    <string name="color_dark_violet">بنفسجي داكن</string>
+
+    <string name="color_indigo">نيلي</string>
+
+    <string name="color_slate_blue">أزرق رمادي</string>
+
+    <string name="color_lavender">الخزامى</string>
+
+    <string name="color_blue_violet">بنفسجي أزرق</string>
+
+    <string name="color_royal_blue">أزرق ملكي</string>
+
+    <string name="color_dark_salmon">سمك السلمون الداكن</string>
+
+    <string name="color_chocolate">الشوكولاتة</string>
+
+    <string name="color_rosy_brown">بني وردي</string>
+
+    <string name="color_white">أبيض</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">لون الساعة</string>
+
+    <string name="left_complication_color_label">لون المضاعفات اليسرى</string>
+
+    <string name="right_complication_color_label">اللون المضاعف الصحيح</string>
+
+    <string name="show_battery_percentage_label">إظهار نسبة البطارية</string>
+
+    <string name="show_weather_label">عرض الطقس</string>
+
+</resources>

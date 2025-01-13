@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Lewy</string>
+
+    <string name="right_complication">Prawidłowy</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Chabrowy niebieski</string>
+
+    <string name="color_medium_slate_blue">Średnio niebieski łupkowy</string>
+
+    <string name="color_dodger_blue">Niebieski Dodger</string>
+
+    <string name="color_deep_sky_blue">Głęboki błękit nieba</string>
+
+    <string name="color_steel_blue">Stalowo-niebieski</string>
+
+    <string name="color_turquoise">Turkus</string>
+
+    <string name="color_medium_turquoise">Średni turkusowy</string>
+
+    <string name="color_dark_turquoise">Ciemny turkus</string>
+
+    <string name="color_cyan">Cyjan</string>
+
+    <string name="color_aquamarine">Akwamaryn</string>
+
+    <string name="color_spring_green">Wiosenna zieleń</string>
+
+    <string name="color_medium_spring_green">Średnia wiosenna zieleń</string>
+
+    <string name="color_light_sea_green">Jasnozielony morski</string>
+
+    <string name="color_sea_green">Morska zieleń</string>
+
+    <string name="color_medium_sea_green">Średnio zielony morski</string>
+
+    <string name="color_green">Zielony</string>
+
+    <string name="color_lime_green">Limonkowy</string>
+
+    <string name="color_forest_green">Leśna zieleń</string>
+
+    <string name="color_dark_green">Ciemnozielony</string>
+
+    <string name="color_chartreuse">Zielonozielony</string>
+
+    <string name="color_yellow_green">Żółty Zielony</string>
+
+    <string name="color_olive_drab">Oliwkowy</string>
+
+    <string name="color_lawn_green">Zielony trawnik</string>
+
+    <string name="color_yellow">Żółty</string>
+
+    <string name="color_gold">Złoto</string>
+
+    <string name="color_goldenrod">Nawłoć</string>
+
+    <string name="color_orange">Pomarańczowy</string>
+
+    <string name="color_dark_orange">Ciemnopomarańczowy</string>
+
+    <string name="color_tomato">Pomidor</string>
+
+    <string name="color_orange_red">Pomarańczowy Czerwony</string>
+
+    <string name="color_red">Czerwony</string>
+
+    <string name="color_crimson">Karmazynowy</string>
+
+    <string name="color_firebrick">Cegła ogniotrwała</string>
+
+    <string name="color_maroon">Kasztanowaty</string>
+
+    <string name="color_violet_red">Fioletowo-czerwony</string>
+
+    <string name="color_deep_pink">Głęboki róż</string>
+
+    <string name="color_hot_pink">Gorący róż</string>
+
+    <string name="color_pale_violet_red">Fioletowo-czerwony</string>
+
+    <string name="color_orchid">Orchidea</string>
+
+    <string name="color_medium_orchid">Średnia orchidea</string>
+
+    <string name="color_purple">Fioletowy</string>
+
+    <string name="color_dark_violet">Ciemny fiolet</string>
+
+    <string name="color_indigo">Indygo</string>
+
+    <string name="color_slate_blue">Łupkowy niebieski</string>
+
+    <string name="color_lavender">Lawenda</string>
+
+    <string name="color_blue_violet">Niebieski Fioletowy</string>
+
+    <string name="color_royal_blue">Królewski niebieski</string>
+
+    <string name="color_dark_salmon">Ciemny łosoś</string>
+
+    <string name="color_chocolate">Czekolada</string>
+
+    <string name="color_rosy_brown">Różowo-brązowy</string>
+
+    <string name="color_white">Biały</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Kolor zegara</string>
+
+    <string name="left_complication_color_label">Kolor komplikacji po lewej stronie</string>
+
+    <string name="right_complication_color_label">Prawy kolor komplikacji</string>
+
+    <string name="show_battery_percentage_label">Pokaż procent baterii</string>
+
+    <string name="show_weather_label">Pokaż pogodę</string>
+
+</resources>

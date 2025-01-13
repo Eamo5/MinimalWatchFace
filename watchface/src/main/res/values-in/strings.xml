@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Kiri</string>
+
+    <string name="right_complication">Benar</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Biru Bunga Jagung</string>
+
+    <string name="color_medium_slate_blue">Biru Batu Tulis Sedang</string>
+
+    <string name="color_dodger_blue">Dodger Biru</string>
+
+    <string name="color_deep_sky_blue">Langit Biru Tua</string>
+
+    <string name="color_steel_blue">Baja Biru</string>
+
+    <string name="color_turquoise">Pirus</string>
+
+    <string name="color_medium_turquoise">Pirus Sedang</string>
+
+    <string name="color_dark_turquoise">Pirus Gelap</string>
+
+    <string name="color_cyan">Biru kehijauan</string>
+
+    <string name="color_aquamarine">Aquamarine</string>
+
+    <string name="color_spring_green">Hijau Musim Semi</string>
+
+    <string name="color_medium_spring_green">Hijau Musim Semi Sedang</string>
+
+    <string name="color_light_sea_green">Hijau Laut Muda</string>
+
+    <string name="color_sea_green">Laut Hijau</string>
+
+    <string name="color_medium_sea_green">Hijau Laut Sedang</string>
+
+    <string name="color_green">Hijau</string>
+
+    <string name="color_lime_green">Hijau Limau</string>
+
+    <string name="color_forest_green">Hutan Hijau</string>
+
+    <string name="color_dark_green">Hijau Tua</string>
+
+    <string name="color_chartreuse">Minuman keras manis</string>
+
+    <string name="color_yellow_green">Kuning Hijau</string>
+
+    <string name="color_olive_drab">Zaitun Kusam</string>
+
+    <string name="color_lawn_green">Rumput Hijau</string>
+
+    <string name="color_yellow">Kuning</string>
+
+    <string name="color_gold">Emas</string>
+
+    <string name="color_goldenrod">bunga batang emas</string>
+
+    <string name="color_orange">Oranye</string>
+
+    <string name="color_dark_orange">Oranye Tua</string>
+
+    <string name="color_tomato">Tomat</string>
+
+    <string name="color_orange_red">Oranye Merah</string>
+
+    <string name="color_red">Merah</string>
+
+    <string name="color_crimson">Merah tua</string>
+
+    <string name="color_firebrick">Batu bata tahan api</string>
+
+    <string name="color_maroon">Merah tua</string>
+
+    <string name="color_violet_red">Ungu Merah</string>
+
+    <string name="color_deep_pink">Merah Muda Tua</string>
+
+    <string name="color_hot_pink">Merah Muda Panas</string>
+
+    <string name="color_pale_violet_red">Merah Ungu Pucat</string>
+
+    <string name="color_orchid">Anggrek</string>
+
+    <string name="color_medium_orchid">Anggrek Sedang</string>
+
+    <string name="color_purple">Ungu</string>
+
+    <string name="color_dark_violet">Ungu Tua</string>
+
+    <string name="color_indigo">Nila</string>
+
+    <string name="color_slate_blue">Biru Batu Tulis</string>
+
+    <string name="color_lavender">bunga lavender</string>
+
+    <string name="color_blue_violet">Biru Violet</string>
+
+    <string name="color_royal_blue">Biru Kerajaan</string>
+
+    <string name="color_dark_salmon">Salmon Hitam</string>
+
+    <string name="color_chocolate">Cokelat</string>
+
+    <string name="color_rosy_brown">Coklat kemerahan</string>
+
+    <string name="color_white">Putih</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Warna jam</string>
+
+    <string name="left_complication_color_label">Komplikasi warna kiri</string>
+
+    <string name="right_complication_color_label">Komplikasi warna yang tepat</string>
+
+    <string name="show_battery_percentage_label">Tampilkan persentase baterai</string>
+
+    <string name="show_weather_label">Tampilkan cuaca</string>
+
+</resources>

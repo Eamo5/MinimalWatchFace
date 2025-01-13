@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">बाएं</string>
+
+    <string name="right_complication">सही</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">कॉर्नफ़्लावर नीला</string>
+
+    <string name="color_medium_slate_blue">मध्यम स्लेट नीला</string>
+
+    <string name="color_dodger_blue">चालाक नीला</string>
+
+    <string name="color_deep_sky_blue">गहरा आकाश नीला</string>
+
+    <string name="color_steel_blue">स्टील ब्लू</string>
+
+    <string name="color_turquoise">फ़िरोज़ा</string>
+
+    <string name="color_medium_turquoise">मध्यम फ़िरोज़ा</string>
+
+    <string name="color_dark_turquoise">गहरा फ़िरोज़ा</string>
+
+    <string name="color_cyan">सियान</string>
+
+    <string name="color_aquamarine">अक्वामरीन</string>
+
+    <string name="color_spring_green">वसंत हरा</string>
+
+    <string name="color_medium_spring_green">मध्यम वसंत हरा</string>
+
+    <string name="color_light_sea_green">हल्का समुद्री हरा</string>
+
+    <string name="color_sea_green">समुद्र हरा</string>
+
+    <string name="color_medium_sea_green">मध्यम समुद्री हरा</string>
+
+    <string name="color_green">हरा</string>
+
+    <string name="color_lime_green">पीला हरा रंग</string>
+
+    <string name="color_forest_green">हरे जंगल</string>
+
+    <string name="color_dark_green">गहरा हरा</string>
+
+    <string name="color_chartreuse">षाट्रेज़</string>
+
+    <string name="color_yellow_green">पीले हरे</string>
+
+    <string name="color_olive_drab">ऑलिव ड्रैब</string>
+
+    <string name="color_lawn_green">लॉन ग्रीन</string>
+
+    <string name="color_yellow">पीला</string>
+
+    <string name="color_gold">सोना</string>
+
+    <string name="color_goldenrod">गोल्डनरोड</string>
+
+    <string name="color_orange">नारंगी</string>
+
+    <string name="color_dark_orange">गहरा नारंगी</string>
+
+    <string name="color_tomato">टमाटर</string>
+
+    <string name="color_orange_red">नारंगी लाल</string>
+
+    <string name="color_red">लाल</string>
+
+    <string name="color_crimson">गहरा लाल</string>
+
+    <string name="color_firebrick">आग ईंट</string>
+
+    <string name="color_maroon">लाल रंग</string>
+
+    <string name="color_violet_red">बैंगनी लाल</string>
+
+    <string name="color_deep_pink">गहरा गुलाबी</string>
+
+    <string name="color_hot_pink">हॉट गुलाबी</string>
+
+    <string name="color_pale_violet_red">हल्का बैंगनी लाल</string>
+
+    <string name="color_orchid">आर्किड</string>
+
+    <string name="color_medium_orchid">मध्यम आर्किड</string>
+
+    <string name="color_purple">बैंगनी</string>
+
+    <string name="color_dark_violet">गहरा बैंगनी</string>
+
+    <string name="color_indigo">नील</string>
+
+    <string name="color_slate_blue">स्लेट ब्लू</string>
+
+    <string name="color_lavender">लैवेंडर</string>
+
+    <string name="color_blue_violet">नीला बैंगनी</string>
+
+    <string name="color_royal_blue">शाही नीला</string>
+
+    <string name="color_dark_salmon">डार्क सैल्मन</string>
+
+    <string name="color_chocolate">चॉकलेट</string>
+
+    <string name="color_rosy_brown">रोज़ी ब्राउन</string>
+
+    <string name="color_white">सफ़ेद</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">घड़ी का रंग</string>
+
+    <string name="left_complication_color_label">बायाँ जटिलता रंग</string>
+
+    <string name="right_complication_color_label">सही जटिलता रंग</string>
+
+    <string name="show_battery_percentage_label">बैटरी प्रतिशत दिखाएं</string>
+
+    <string name="show_weather_label">मौसम दिखाएं</string>
+
+</resources>

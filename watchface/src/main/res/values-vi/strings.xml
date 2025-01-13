@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Bên trái</string>
+
+    <string name="right_complication">Phải</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Hoa ngô xanh</string>
+
+    <string name="color_medium_slate_blue">Màu xanh đá phiến trung bình</string>
+
+    <string name="color_dodger_blue">Dodger Xanh</string>
+
+    <string name="color_deep_sky_blue">Trời xanh thẳm</string>
+
+    <string name="color_steel_blue">Màu xanh thép</string>
+
+    <string name="color_turquoise">Màu ngọc lam</string>
+
+    <string name="color_medium_turquoise">Màu ngọc lam trung bình</string>
+
+    <string name="color_dark_turquoise">Màu ngọc lam sẫm</string>
+
+    <string name="color_cyan">Màu lục lam</string>
+
+    <string name="color_aquamarine">Ngọc bích xanh</string>
+
+    <string name="color_spring_green">Mùa xuân xanh</string>
+
+    <string name="color_medium_spring_green">Xanh lá cây mùa xuân trung bình</string>
+
+    <string name="color_light_sea_green">Xanh biển nhạt</string>
+
+    <string name="color_sea_green">Xanh biển</string>
+
+    <string name="color_medium_sea_green">Xanh biển trung bình</string>
+
+    <string name="color_green">Màu xanh lá</string>
+
+    <string name="color_lime_green">Xanh chanh</string>
+
+    <string name="color_forest_green">Rừng xanh</string>
+
+    <string name="color_dark_green">Xanh đậm</string>
+
+    <string name="color_chartreuse">Màu xanh lục nhạt</string>
+
+    <string name="color_yellow_green">Vàng Xanh Lá Cây</string>
+
+    <string name="color_olive_drab">Màu ô liu</string>
+
+    <string name="color_lawn_green">Cỏ Xanh</string>
+
+    <string name="color_yellow">Màu vàng</string>
+
+    <string name="color_gold">Vàng</string>
+
+    <string name="color_goldenrod">cây kim châm</string>
+
+    <string name="color_orange">Quả cam</string>
+
+    <string name="color_dark_orange">Màu cam đậm</string>
+
+    <string name="color_tomato">Cà chua</string>
+
+    <string name="color_orange_red">Màu đỏ cam</string>
+
+    <string name="color_red">Màu đỏ</string>
+
+    <string name="color_crimson">Đỏ thẫm</string>
+
+    <string name="color_firebrick">Gạch chịu lửa</string>
+
+    <string name="color_maroon">Màu hạt dẻ</string>
+
+    <string name="color_violet_red">Màu đỏ tím</string>
+
+    <string name="color_deep_pink">Hồng đậm</string>
+
+    <string name="color_hot_pink">Hồng nóng</string>
+
+    <string name="color_pale_violet_red">Đỏ tím nhạt</string>
+
+    <string name="color_orchid">hoa lan</string>
+
+    <string name="color_medium_orchid">Lan trung bình</string>
+
+    <string name="color_purple">Màu tím</string>
+
+    <string name="color_dark_violet">Tím đậm</string>
+
+    <string name="color_indigo">Chàm</string>
+
+    <string name="color_slate_blue">Màu xanh đá phiến</string>
+
+    <string name="color_lavender">Hoa oải hương</string>
+
+    <string name="color_blue_violet">Màu xanh tím</string>
+
+    <string name="color_royal_blue">Xanh hoàng gia</string>
+
+    <string name="color_dark_salmon">Cá hồi đen</string>
+
+    <string name="color_chocolate">Sôcôla</string>
+
+    <string name="color_rosy_brown">Nâu hồng</string>
+
+    <string name="color_white">Trắng</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Màu đồng hồ</string>
+
+    <string name="left_complication_color_label">Màu biến chứng bên trái</string>
+
+    <string name="right_complication_color_label">Màu sắc biến chứng bên phải</string>
+
+    <string name="show_battery_percentage_label">Hiển thị phần trăm pin</string>
+
+    <string name="show_weather_label">Hiển thị thời tiết</string>
+
+</resources>
