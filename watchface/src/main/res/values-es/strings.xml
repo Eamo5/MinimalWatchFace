@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Izquierda</string>
+
+    <string name="right_complication">Bien</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Azul aciano</string>
+
+    <string name="color_medium_slate_blue">Azul pizarra medio</string>
+
+    <string name="color_dodger_blue">Azul Dodger</string>
+
+    <string name="color_deep_sky_blue">Azul cielo profundo</string>
+
+    <string name="color_steel_blue">Azul acero</string>
+
+    <string name="color_turquoise">Turquesa</string>
+
+    <string name="color_medium_turquoise">Turquesa medio</string>
+
+    <string name="color_dark_turquoise">Turquesa oscuro</string>
+
+    <string name="color_cyan">Cian</string>
+
+    <string name="color_aquamarine">Aguamarina</string>
+
+    <string name="color_spring_green">Verde primavera</string>
+
+    <string name="color_medium_spring_green">Verde primaveral medio</string>
+
+    <string name="color_light_sea_green">Verde mar claro</string>
+
+    <string name="color_sea_green">Verde mar</string>
+
+    <string name="color_medium_sea_green">Verde mar medio</string>
+
+    <string name="color_green">Verde</string>
+
+    <string name="color_lime_green">Verde lima</string>
+
+    <string name="color_forest_green">Verde bosque</string>
+
+    <string name="color_dark_green">Verde oscuro</string>
+
+    <string name="color_chartreuse">Monasterio</string>
+
+    <string name="color_yellow_green">Amarillo verde</string>
+
+    <string name="color_olive_drab">Verde oliva</string>
+
+    <string name="color_lawn_green">Césped verde</string>
+
+    <string name="color_yellow">Amarillo</string>
+
+    <string name="color_gold">Oro</string>
+
+    <string name="color_goldenrod">Vara de oro</string>
+
+    <string name="color_orange">Naranja</string>
+
+    <string name="color_dark_orange">Naranja oscuro</string>
+
+    <string name="color_tomato">Tomate</string>
+
+    <string name="color_orange_red">Naranja Rojo</string>
+
+    <string name="color_red">Rojo</string>
+
+    <string name="color_crimson">Carmesí</string>
+
+    <string name="color_firebrick">Ladrillo refractario</string>
+
+    <string name="color_maroon">Granate</string>
+
+    <string name="color_violet_red">Violeta rojo</string>
+
+    <string name="color_deep_pink">Rosa oscuro</string>
+
+    <string name="color_hot_pink">Rosa fuerte</string>
+
+    <string name="color_pale_violet_red">Rojo violeta pálido</string>
+
+    <string name="color_orchid">Orquídea</string>
+
+    <string name="color_medium_orchid">Orquídea mediana</string>
+
+    <string name="color_purple">Púrpura</string>
+
+    <string name="color_dark_violet">Violeta oscuro</string>
+
+    <string name="color_indigo">Índigo</string>
+
+    <string name="color_slate_blue">Azul pizarra</string>
+
+    <string name="color_lavender">Lavanda</string>
+
+    <string name="color_blue_violet">Violeta azul</string>
+
+    <string name="color_royal_blue">Azul real</string>
+
+    <string name="color_dark_salmon">Salmón oscuro</string>
+
+    <string name="color_chocolate">Chocolate</string>
+
+    <string name="color_rosy_brown">Marrón rosado</string>
+
+    <string name="color_white">Blanco</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Color del reloj</string>
+
+    <string name="left_complication_color_label">Complicación de color izquierda</string>
+
+    <string name="right_complication_color_label">Complicación de color derecha</string>
+
+    <string name="show_battery_percentage_label">Mostrar porcentaje de batería</string>
+
+    <string name="show_weather_label">Mostrar el tiempo</string>
+
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">Gauche</string>
+
+    <string name="right_complication">Droite</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">Bleuet Bleuet</string>
+
+    <string name="color_medium_slate_blue">Bleu ardoise moyen</string>
+
+    <string name="color_dodger_blue">Bleu Dodger</string>
+
+    <string name="color_deep_sky_blue">Bleu ciel profond</string>
+
+    <string name="color_steel_blue">Bleu acier</string>
+
+    <string name="color_turquoise">Turquoise</string>
+
+    <string name="color_medium_turquoise">Turquoise Moyenne</string>
+
+    <string name="color_dark_turquoise">Turquoise foncé</string>
+
+    <string name="color_cyan">Cyan</string>
+
+    <string name="color_aquamarine">Bleu vert</string>
+
+    <string name="color_spring_green">Vert printanier</string>
+
+    <string name="color_medium_spring_green">Vert printanier moyen</string>
+
+    <string name="color_light_sea_green">Vert de mer clair</string>
+
+    <string name="color_sea_green">Vert de mer</string>
+
+    <string name="color_medium_sea_green">Vert de mer moyen</string>
+
+    <string name="color_green">Vert</string>
+
+    <string name="color_lime_green">Vert citron</string>
+
+    <string name="color_forest_green">Vert forêt</string>
+
+    <string name="color_dark_green">Vert foncé</string>
+
+    <string name="color_chartreuse">Chartreuse</string>
+
+    <string name="color_yellow_green">Jaune Vert</string>
+
+    <string name="color_olive_drab">Vert olive</string>
+
+    <string name="color_lawn_green">Pelouse verte</string>
+
+    <string name="color_yellow">Jaune</string>
+
+    <string name="color_gold">Or</string>
+
+    <string name="color_goldenrod">Verge d\'or</string>
+
+    <string name="color_orange">Orange</string>
+
+    <string name="color_dark_orange">Orange foncé</string>
+
+    <string name="color_tomato">Tomate</string>
+
+    <string name="color_orange_red">Rouge orange</string>
+
+    <string name="color_red">Rouge</string>
+
+    <string name="color_crimson">Cramoisi</string>
+
+    <string name="color_firebrick">Brique réfractaire</string>
+
+    <string name="color_maroon">Bordeaux</string>
+
+    <string name="color_violet_red">Rouge violet</string>
+
+    <string name="color_deep_pink">Rose foncé</string>
+
+    <string name="color_hot_pink">Rose vif</string>
+
+    <string name="color_pale_violet_red">Rouge violet pâle</string>
+
+    <string name="color_orchid">Orchidée</string>
+
+    <string name="color_medium_orchid">Orchidée moyenne</string>
+
+    <string name="color_purple">Violet</string>
+
+    <string name="color_dark_violet">Violet foncé</string>
+
+    <string name="color_indigo">Indigo</string>
+
+    <string name="color_slate_blue">Bleu ardoise</string>
+
+    <string name="color_lavender">Lavande</string>
+
+    <string name="color_blue_violet">Bleu Violet</string>
+
+    <string name="color_royal_blue">Bleu royal</string>
+
+    <string name="color_dark_salmon">Saumon foncé</string>
+
+    <string name="color_chocolate">Chocolat</string>
+
+    <string name="color_rosy_brown">Brun rosé</string>
+
+    <string name="color_white">Blanc</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">Couleur de l\'horloge</string>
+
+    <string name="left_complication_color_label">Couleur de la complication gauche</string>
+
+    <string name="right_complication_color_label">Couleur de la complication correcte</string>
+
+    <string name="show_battery_percentage_label">Afficher le pourcentage de la batterie</string>
+
+    <string name="show_weather_label">Afficher la météo</string>
+
+</resources>

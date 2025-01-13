@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
+
+    <!-- Complication Names -->
+
+    <string name="left_complication">ซ้าย</string>
+
+    <string name="right_complication">ขวา</string>
+
+    <!-- Colors -->
+
+    <string name="color_cornflower_blue">คอร์นฟลาวเวอร์บลู</string>
+
+    <string name="color_medium_slate_blue">สีน้ำเงินเทาปานกลาง</string>
+
+    <string name="color_dodger_blue">ดอดเจอร์บลู</string>
+
+    <string name="color_deep_sky_blue">สีฟ้าเข้ม</string>
+
+    <string name="color_steel_blue">สตีลบลู</string>
+
+    <string name="color_turquoise">สีฟ้าอมเขียว</string>
+
+    <string name="color_medium_turquoise">สีฟ้าอมเขียวปานกลาง</string>
+
+    <string name="color_dark_turquoise">สีฟ้าอมเขียวเข้ม</string>
+
+    <string name="color_cyan">ไซยาน</string>
+
+    <string name="color_aquamarine">อะความารีน</string>
+
+    <string name="color_spring_green">สปริงกรีน</string>
+
+    <string name="color_medium_spring_green">สีเขียวสปริงขนาดกลาง</string>
+
+    <string name="color_light_sea_green">สีเขียวทะเลอ่อน</string>
+
+    <string name="color_sea_green">สีเขียวทะเล</string>
+
+    <string name="color_medium_sea_green">สีเขียวทะเลปานกลาง</string>
+
+    <string name="color_green">สีเขียว</string>
+
+    <string name="color_lime_green">สีเขียวมะนาว</string>
+
+    <string name="color_forest_green">สีเขียวป่า</string>
+
+    <string name="color_dark_green">สีเขียวเข้ม</string>
+
+    <string name="color_chartreuse">ชาร์เทรอส</string>
+
+    <string name="color_yellow_green">สีเหลืองสีเขียว</string>
+
+    <string name="color_olive_drab">มะกอกดำ</string>
+
+    <string name="color_lawn_green">สนามหญ้าสีเขียว</string>
+
+    <string name="color_yellow">สีเหลือง</string>
+
+    <string name="color_gold">ทอง</string>
+
+    <string name="color_goldenrod">โกลเด้นร็อด</string>
+
+    <string name="color_orange">ส้ม</string>
+
+    <string name="color_dark_orange">ส้มเข้ม</string>
+
+    <string name="color_tomato">มะเขือเทศ</string>
+
+    <string name="color_orange_red">สีส้มแดง</string>
+
+    <string name="color_red">สีแดง</string>
+
+    <string name="color_crimson">สีแดงเข้ม</string>
+
+    <string name="color_firebrick">อิฐทนไฟ</string>
+
+    <string name="color_maroon">สีน้ำตาลแดง</string>
+
+    <string name="color_violet_red">ไวโอเล็ตสีแดง</string>
+
+    <string name="color_deep_pink">สีชมพูเข้ม</string>
+
+    <string name="color_hot_pink">สีชมพูร้อน</string>
+
+    <string name="color_pale_violet_red">ไวโอเล็ตสีแดงอ่อน</string>
+
+    <string name="color_orchid">กล้วยไม้</string>
+
+    <string name="color_medium_orchid">กล้วยไม้ขนาดกลาง</string>
+
+    <string name="color_purple">สีม่วง</string>
+
+    <string name="color_dark_violet">ไวโอเล็ตเข้ม</string>
+
+    <string name="color_indigo">คราม</string>
+
+    <string name="color_slate_blue">สีฟ้าสเลท</string>
+
+    <string name="color_lavender">ลาเวนเดอร์</string>
+
+    <string name="color_blue_violet">ไวโอเล็ตสีฟ้า</string>
+
+    <string name="color_royal_blue">รอยัลบลู</string>
+
+    <string name="color_dark_salmon">แซลมอนดำ</string>
+
+    <string name="color_chocolate">ช็อคโกแลต</string>
+
+    <string name="color_rosy_brown">โรซี่บราวน์</string>
+
+    <string name="color_white">สีขาว</string>
+
+    <!-- Settings Labels -->
+
+    <string name="clock_color_label">สีของนาฬิกา</string>
+
+    <string name="left_complication_color_label">สีแทรกด้านซ้าย</string>
+
+    <string name="right_complication_color_label">สีภาวะแทรกซ้อนด้านขวา</string>
+
+    <string name="show_battery_percentage_label">แสดงเปอร์เซ็นต์แบตเตอรี่</string>
+
+    <string name="show_weather_label">แสดงสภาพอากาศ</string>
+
+</resources>
