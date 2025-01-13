@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Minimal Watch Face</string>
+    <string name="app_name" translatable="false">Minimal Watch Face</string>
 
     <!-- Complication Names -->
     <string name="left_complication">Left</string>
