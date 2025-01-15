@@ -4,10 +4,10 @@ kotlin = "1.9.24"
 compileSdk = "34"
 minSdk = "34"
 targetSdk = "34"
-# Version code needs to be incremented by two for each release
-# WearOS 4 = versionCode, WearOS 5 = versionCode + 1
-versionCode = "1"
-versionName = "1.0"
+# SDK version + version name + iteration
+wear4VersionCode = "331000"
+wear5VersionCode = "341000"
+versionName = "1.0.0"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

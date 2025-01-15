@@ -13,23 +13,22 @@ android {
         applicationId = "com.eamo5.minimalwatchface"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = libs.versions.versionCode.get().toInt()
         versionName = libs.versions.versionName.get()
     }
 
     productFlavors {
-        flavorDimensions.add("version")
+        flavorDimensions.add("sdk")
         create("wear4") {
-            dimension = "version"
+            dimension = "sdk"
             manifestPlaceholders["wffVersion"] = "1"
             minSdk = 33
-            versionName = "${libs.versions.versionName.get()}-4"
+            versionCode = libs.versions.wear4VersionCode.get().toInt()
         }
         create("wear5") {
-            dimension = "version"
+            dimension = "sdk"
             manifestPlaceholders["wffVersion"] = "2"
             minSdk = 34
-            versionName = "${libs.versions.versionName.get()}-5"
+            versionCode = libs.versions.wear5VersionCode.get().toInt()
         }
     }
 
