@@ -289,7 +289,7 @@ tasks.register("optimizeWff") {
 
             // Use Gradle to unzip APK
             copy {
-                from(zipTree(it.key))
+                from(zipTree(it.value))
                 into(unzipDir)
             }
 
