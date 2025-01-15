@@ -174,16 +174,16 @@
     <!-- Weather Bitmap Fonts -->
     <BitmapFonts>
         <BitmapFont name="weather_icons_day">
-            <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="6" marginTop="3" name="1" resource="ic_clear" width="46"/>
-            <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
-            <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
-            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="5" resource="ic_heavy_snow" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="6" resource="ic_rain" width="46"/>
-            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="7" resource="ic_snow" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="3" marginTop="3" name="8" resource="ic_sunny" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="9" resource="ic_thunderstorm" width="46"/>
+            <Character height="96" name="0" resource="ic_unknown" width="96"/>
+            <Character height="96" name="1" resource="ic_clear" width="96"/>
+            <Character height="96" name="2" resource="ic_cloudy" width="96"/>
+            <Character height="96" name="3" resource="ic_fog" width="96"/>
+            <Character height="96" name="4" resource="ic_heavy_rain" width="96"/>
+            <Character height="96" name="5" resource="ic_heavy_snow" width="96"/>
+            <Character height="96" name="6" resource="ic_rain" width="96"/>
+            <Character height="96" name="7" resource="ic_snow" width="96"/>
+            <Character height="96" name="8" resource="ic_sunny" width="96"/>
+            <Character height="96" name="9" resource="ic_thunderstorm" width="96"/>
             <Word height="96" name="10" resource="ic_sleet" width="96"/>
             <Word height="96" name="11" resource="ic_snow" width="96"/>
             <Word height="96" name="12" resource="ic_rain" width="96"/>
@@ -193,16 +193,16 @@
         </BitmapFont>
         <!-- Icon set for night, [WEATHER.IS_DAY] == 0 -->
         <BitmapFont name="weather_icons_night">
-            <Character height="46" marginBottom="2" marginLeft="2" marginRight="3" marginTop="3" name="0" resource="ic_unknown" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="6" marginTop="3" name="1" resource="ic_clear" width="46"/>
-            <Character height="46" marginBottom="7" marginLeft="1" marginRight="1" marginTop="9" name="2" resource="ic_cloudy" width="46"/>
-            <Character height="46" marginBottom="8" marginLeft="5" marginRight="5" marginTop="8" name="3" resource="ic_fog" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="4" resource="ic_heavy_rain" width="46"/>
-            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="5" resource="ic_heavy_snow" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="6" resource="ic_rain" width="46"/>
-            <Character height="46" marginBottom="2" marginLeft="4" marginRight="4" marginTop="1" name="7" resource="ic_snow" width="46"/>
-            <Character height="46" marginBottom="3" marginLeft="3" marginRight="3" marginTop="3" name="8" resource="ic_sunny" width="46"/>
-            <Character height="46" marginBottom="1" marginLeft="4" marginRight="4" marginTop="1" name="9" resource="ic_thunderstorm" width="46"/>
+            <Character height="96" name="0" resource="ic_unknown" width="96"/>
+            <Character height="96" name="1" resource="ic_clear" width="96"/>
+            <Character height="96" name="2" resource="ic_cloudy" width="96"/>
+            <Character height="96" name="3" resource="ic_fog" width="96"/>
+            <Character height="96" name="4" resource="ic_heavy_rain" width="96"/>
+            <Character height="96" name="5" resource="ic_heavy_snow" width="96"/>
+            <Character height="96" name="6" resource="ic_rain" width="96"/>
+            <Character height="96" name="7" resource="ic_snow" width="96"/>
+            <Character height="96" name="8" resource="ic_sunny" width="96"/>
+            <Character height="96" name="9" resource="ic_thunderstorm" width="96"/>
             <Word height="96" name="10" resource="ic_sleet" width="96"/>
             <Word height="96" name="11" resource="ic_snow" width="96"/>
             <Word height="96" name="12" resource="ic_rain" width="96"/>
