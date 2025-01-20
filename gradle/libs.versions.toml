@@ -5,8 +5,8 @@ compileSdk = "34"
 minSdk = "34"
 targetSdk = "34"
 # SDK version + version name + iteration
-wear4VersionCode = "331000"
-wear5VersionCode = "341000"
+wear4VersionCode = "331001"
+wear5VersionCode = "341001"
 versionName = "1.0.0"
 
 [plugins]
