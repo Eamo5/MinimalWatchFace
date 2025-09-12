@@ -5,9 +5,9 @@ compileSdk = "36"
 minSdk = "34"
 targetSdk = "36"
 # SDK version + version name + iteration
-wear4VersionCode = "331001"
-wear5VersionCode = "341001"
-versionName = "1.0.0"
+wear4VersionCode = "331010"
+wear5VersionCode = "341010"
+versionName = "1.0.1"
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
