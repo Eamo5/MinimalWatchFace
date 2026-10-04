@@ -135,9 +135,6 @@ abstract class ValidateMemoryFootprintTask @Inject constructor(
     var apks: List<File> = emptyList()
 
     @get:Input
-    val schemaVersion = 4
-
-    @get:Input
     val ambientLimitMb = 10
 
     @get:Input
@@ -180,7 +177,7 @@ abstract class ValidateMemoryFootprintTask @Inject constructor(
                     commandLine(
                         "java", "-jar", jarFile.absolutePath,
                         "--watch-face", apk.absolutePath,
-                        "--schema-version", schemaVersion.toString(),
+                        // No --schema-version: use the WFF version from the APK's manifest
                         "--ambient-limit-mb", ambientLimitMb.toString(),
                         "--active-limit-mb", activeLimitMb.toString(),
                         *additionalArgs.toTypedArray()
@@ -283,10 +280,11 @@ tasks.register<ValidateWffXmlTask>("validateWffXml") {
     validatorDir = file("../watchface-tools/third_party/wff")
     gradleBuildTask = ":specification:validator:build"
     jarFile = file("../watchface-tools/third_party/wff/specification/validator/build/libs/wff-validator.jar")
-    versionedWffFiles = mapOf(
-        1 to file("src/wear4/res/raw/watchface.xml"),
-        4 to file("src/wear5/res/raw/watchface.xml")
-    )
+    // Validate each flavor against the WFF version declared in its manifest
+    versionedWffFiles = android.productFlavors.associate { flavor ->
+        flavor.manifestPlaceholders.getValue("wffVersion").toString().toInt() to
+            file("src/${flavor.name}/res/raw/watchface.xml")
+    }
     gradlewScript = if (System.getProperty("os.name").lowercase().contains("win"))
         "gradlew.bat" else "./gradlew"
 }
