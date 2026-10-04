@@ -34,7 +34,7 @@ def weather_icon(x, y, size, color=None):
 
 def weather_temp(x, y, w, h, size, color=None, weight=None, align="START", unit=True):
     if unit:
-        return part_text(x, y, w, h, "%s° %s", WEATHER_TEMP, WEATHER_UNIT, size=size,
+        return part_text(x, y, w, h, "%s°%s", WEATHER_TEMP, WEATHER_UNIT, size=size,
                          color=color, weight=weight, align=align)
     return part_text(x, y, w, h, "%s°", WEATHER_TEMP, size=size, color=color, weight=weight,
                      align=align)
