@@ -202,7 +202,7 @@
         </BooleanConfiguration>
 
         <!-- Top Left Complication -->
-        <ComplicationSlot displayName="left_complication" height="112" name="left_complication" slotId="0" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="60" y="40">
+        <ComplicationSlot displayName="left_complication" height="112" name="left_complication" slotId="0" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" width="112" x="60" y="40">
             <DefaultProviderPolicy defaultSystemProvider="STEP_COUNT" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderStepCountService" primaryProviderType="RANGED_VALUE"/>
             <BoundingOval height="112" outlinePadding="2" width="112" x="0" y="0"/>
 
@@ -242,7 +242,7 @@
                                 </PartImage>
                             </Compare>
                         </Condition>
-                        <PartText height="28" width="112" x="0" y="64">
+                        <PartText height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="112" x="0" y="64">
                             <Text ellipsis="TRUE">
                                 <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
@@ -276,7 +276,7 @@
                     </Compare>
                     <!-- Text, on its own, with no Icon or Title -->
                     <Default>
-                        <PartText height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="112" x="0" y="0">
+                        <PartText height="28" tintColor="[CONFIGURATION.leftComplication.0]" width="112" x="0" y="42">
                             <Text ellipsis="TRUE">
                                 <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
@@ -297,7 +297,7 @@
                     </PartDraw>
                     <PartDraw height="112" width="112" x="0" y="0">
                         <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
+                            <Transform target="endAngle" value="-150 + (clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] &gt; [COMPLICATION.RANGED_VALUE_MIN] ? [COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN] : 1) * 300"/>
                             <Stroke cap="ROUND" color="[CONFIGURATION.leftComplication.0]" thickness="4"/>
                         </Arc>
                     </PartDraw>
@@ -357,6 +357,9 @@
                                 <Expression name="monochromatic_both_labels">
                                     <![CDATA[([COMPLICATION.TEXT] != null && [COMPLICATION.TITLE] != null)]]>
                                 </Expression>
+                                <Expression name="rangedValue_textOnly">
+                                    <![CDATA[[COMPLICATION.TEXT] != null]]>
+                                </Expression>
                             </Expressions>
                             <!-- Both Title and Text are present, show text above title -->
                             <Compare expression="monochromatic_both_labels">
@@ -379,14 +382,25 @@
                                     </Text>
                                 </PartText>
                             </Compare>
-                            <!-- Only one of Title or Text is present -->
+                            <!-- Only Text is present -->
+                            <Compare expression="rangedValue_textOnly">
+                                <PartText height="28" width="112" x="0" y="42">
+                                    <Text ellipsis="TRUE">
+                                        <Font color="[CONFIGURATION.leftComplication.0]" family="SYNC_TO_DEVICE" size="28">
+                                            <Template>%s
+                                                <Parameter expression="[COMPLICATION.TEXT]"/>
+                                            </Template>
+                                        </Font>
+                                    </Text>
+                                </PartText>
+                            </Compare>
+                            <!-- Only Title is present -->
                             <Default>
                                 <PartText height="28" width="112" x="0" y="42">
                                     <Text ellipsis="TRUE">
                                         <Font family="SYNC_TO_DEVICE" size="28">
-                                            <!-- Prefer Text over Title -->
                                             <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
+                                                <Parameter expression="[COMPLICATION.TITLE]"/>
                                             </Template>
                                         </Font>
                                     </Text>
@@ -540,7 +554,7 @@
 
 
         <!-- Top Right Complication -->
-        <ComplicationSlot displayName="right_complication" height="112" name="right_complication" slotId="1" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE EMPTY" width="112" x="278" y="40">
+        <ComplicationSlot displayName="right_complication" height="112" name="right_complication" slotId="1" supportedTypes="RANGED_VALUE SHORT_TEXT SMALL_IMAGE MONOCHROMATIC_IMAGE EMPTY" width="112" x="278" y="40">
             <DefaultProviderPolicy defaultSystemProvider="SUNRISE_SUNSET" defaultSystemProviderType="SHORT_TEXT" primaryProvider="com.google.android.apps.fitness/com.google.android.wearable.fitness.complications.GoalProviderHeartPointsService" primaryProviderType="RANGED_VALUE"/>
             <BoundingOval height="112" outlinePadding="2" width="112" x="0" y="0"/>
 
@@ -580,7 +594,7 @@
                                 </PartImage>
                             </Compare>
                         </Condition>
-                        <PartText height="28" width="112" x="0" y="64">
+                        <PartText height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="112" x="0" y="64">
                             <Text ellipsis="TRUE">
                                 <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
@@ -614,7 +628,7 @@
                     </Compare>
                     <!-- Text, on its own, with no Icon or Title -->
                     <Default>
-                        <PartText height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="112" x="0" y="0">
+                        <PartText height="28" tintColor="[CONFIGURATION.rightComplication.0]" width="112" x="0" y="42">
                             <Text ellipsis="TRUE">
                                 <Font family="SYNC_TO_DEVICE" size="28">
                                     <Template>%s
@@ -635,7 +649,7 @@
                     </PartDraw>
                     <PartDraw height="112" width="112" x="0" y="0">
                         <Arc centerX="56" centerY="56" endAngle="150" height="94" startAngle="-150" width="94">
-                            <Transform target="endAngle" value="-150 + (((clamp(([COMPLICATION.RANGED_VALUE_VALUE]), ([COMPLICATION.RANGED_VALUE_MIN]), ([COMPLICATION.RANGED_VALUE_MAX])) - ([COMPLICATION.RANGED_VALUE_MIN])) / (([COMPLICATION.RANGED_VALUE_MAX]) - ([COMPLICATION.RANGED_VALUE_MIN]))) * (300))"/>
+                            <Transform target="endAngle" value="-150 + (clamp([COMPLICATION.RANGED_VALUE_VALUE], [COMPLICATION.RANGED_VALUE_MIN], [COMPLICATION.RANGED_VALUE_MAX]) - [COMPLICATION.RANGED_VALUE_MIN]) / ([COMPLICATION.RANGED_VALUE_MAX] &gt; [COMPLICATION.RANGED_VALUE_MIN] ? [COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN] : 1) * 300"/>
                             <Stroke cap="ROUND" color="[CONFIGURATION.rightComplication.0]" thickness="4"/>
                         </Arc>
                     </PartDraw>
@@ -695,6 +709,9 @@
                                 <Expression name="monochromatic_both_labels">
                                     <![CDATA[([COMPLICATION.TEXT] != null && [COMPLICATION.TITLE] != null)]]>
                                 </Expression>
+                                <Expression name="rangedValue_textOnly">
+                                    <![CDATA[[COMPLICATION.TEXT] != null]]>
+                                </Expression>
                             </Expressions>
                             <!-- Both Title and Text are present, show text above title -->
                             <Compare expression="monochromatic_both_labels">
@@ -717,14 +734,25 @@
                                     </Text>
                                 </PartText>
                             </Compare>
-                            <!-- Only one of Title or Text is present -->
+                            <!-- Only Text is present -->
+                            <Compare expression="rangedValue_textOnly">
+                                <PartText height="28" width="112" x="0" y="42">
+                                    <Text ellipsis="TRUE">
+                                        <Font color="[CONFIGURATION.rightComplication.0]" family="SYNC_TO_DEVICE" size="28">
+                                            <Template>%s
+                                                <Parameter expression="[COMPLICATION.TEXT]"/>
+                                            </Template>
+                                        </Font>
+                                    </Text>
+                                </PartText>
+                            </Compare>
+                            <!-- Only Title is present -->
                             <Default>
                                 <PartText height="28" width="112" x="0" y="42">
                                     <Text ellipsis="TRUE">
                                         <Font family="SYNC_TO_DEVICE" size="28">
-                                            <!-- Prefer Text over Title -->
                                             <Template>%s
-                                                <Parameter expression="[COMPLICATION.TEXT] != null ? [COMPLICATION.TEXT] : [COMPLICATION.TITLE]"/>
+                                                <Parameter expression="[COMPLICATION.TITLE]"/>
                                             </Template>
                                         </Font>
                                     </Text>
